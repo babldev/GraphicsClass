@@ -17,6 +17,8 @@
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>
 
+#include "Ball.h"
+
 using namespace std;                    // make std accessible
 
 //-----------------------------------------------------------------------
@@ -26,6 +28,8 @@ using namespace std;                    // make std accessible
 GLint TIMER_DELAY = 10000;                      // timer delay (10 seconds)
 GLfloat RED_RGB[] = {1.0, 0.0, 0.0};            // drawing colors
 GLfloat BLUE_RGB[] = {0.0, 0.0, 1.0};
+
+Ball* ball_d;
 
 //-----------------------------------------------------------------------
 //  Global variables
@@ -52,6 +56,7 @@ void myReshape(int w, int h) {
 }
 // draw diamond and rectangle
 void drawObjects(GLfloat* diamColor, GLfloat* rectColor) {
+	/*
     glColor3fv(diamColor);                      // set diamond color
     glBegin(GL_POLYGON);                        // draw the diamond
 	glVertex2f(0.90, 0.50);
@@ -61,11 +66,13 @@ void drawObjects(GLfloat* diamColor, GLfloat* rectColor) {
     glEnd();
     glColor3fv(rectColor);                      // set rectangle color
     glRectf(0.25, 0.25, 0.75, 0.75);            // draw the rectangle
+	 */
+	ball_d->draw();
 }
 
 void myDisplay(void) {                          // display callback
     cout << "MyDisplay called" << endl;
-    glClearColor(0.5, 0.5, 0.5, 1.0);           // background is gray
+    glClearColor(1.0, 1.0, 1.0, 1.0);           // background is gray
     glClear(GL_COLOR_BUFFER_BIT);               // clear the window
     
     if (isReversed)                             // draw the objects
@@ -105,6 +112,10 @@ void myKeyboard(unsigned char c, int x, int y) {
     }
 }
 
+void initWindow() {
+	ball_d = new Ball(0.5, 0.5, 0.5, 0.5);
+}
+
 //-----------------------------------------------------------------------
 //  Main program
 //      This does all the set up for the program.  It creates the game
@@ -115,7 +126,7 @@ int main(int argc, char** argv)
 {
     cout << "\n\
 	-----------------------------------------------------------------------\n\
-	CMSC 427 Sample Program.\n\
+	CMSC 427 - Project 1.\n\
 	- Click left mouse button to swap colors.\n\
 	- Try resizing and covering/uncovering the window.\n\
 	- Hit q to quit.\n\
@@ -123,9 +134,11 @@ int main(int argc, char** argv)
 	
     glutInit(&argc, argv);                      // OpenGL initializations
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);// double buffering and RGB
-    glutInitWindowSize(400, 400);               // create a 400x400 window
+    glutInitWindowSize(800, 600);               // create a 400x400 window
     glutInitWindowPosition(0, 0);               // ...in the upper left
     glutCreateWindow(argv[0]);                  // create the window
+	
+	initWindow();
 	
     glutDisplayFunc(myDisplay);                 // setup callbacks
     glutReshapeFunc(myReshape);
@@ -133,5 +146,8 @@ int main(int argc, char** argv)
     glutKeyboardFunc(myKeyboard);
     glutTimerFunc(TIMER_DELAY, myTimer, 0);
     glutMainLoop();                             // start it running
+	
+	delete ball_d;
+	
     return 0;                                   // ANSI C expects this
 }

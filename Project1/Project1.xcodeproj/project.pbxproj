@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410F91CE1246F8010044A8E2 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F91CD1246F8010044A8E2 /* Ball.cpp */; };
+		410F91D01246F8CA0044A8E2 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F91CF1246F8CA0044A8E2 /* Drawable.cpp */; };
+		410F926512484E120044A8E2 /* Gun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F926412484E120044A8E2 /* Gun.cpp */; };
 		419D3AF61246F259007FA8A7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AF51246F259007FA8A7 /* OpenGL.framework */; };
 		419D3AFC1246F260007FA8A7 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AFB1246F260007FA8A7 /* GLUT.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -28,9 +31,15 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		410F91C71246F7440044A8E2 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		410F91CA1246F7440044A8E2 /* Project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project1; sourceTree = BUILT_PRODUCTS_DIR; };
+		410F91CC1246F8010044A8E2 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		410F91CD1246F8010044A8E2 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
+		410F91CF1246F8CA0044A8E2 /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
+		410F926312484E120044A8E2 /* Gun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gun.h; sourceTree = "<group>"; };
+		410F926412484E120044A8E2 /* Gun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gun.cpp; sourceTree = "<group>"; };
 		419D3AF51246F259007FA8A7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		419D3AFB1246F260007FA8A7 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
-		8DD76F6C0486A84900D96B5E /* Project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Project1; path = /Users/babl2/Documents/graphics/Project1/build/Debug/Project1; sourceTree = "<absolute>"; };
 		C6859E8B029090EE04C91782 /* Project1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Project1.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +72,12 @@
 			isa = PBXGroup;
 			children = (
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
+				410F91C71246F7440044A8E2 /* Drawable.h */,
+				410F91CF1246F8CA0044A8E2 /* Drawable.cpp */,
+				410F91CC1246F8010044A8E2 /* Ball.h */,
+				410F91CD1246F8010044A8E2 /* Ball.cpp */,
+				410F926312484E120044A8E2 /* Gun.h */,
+				410F926412484E120044A8E2 /* Gun.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -70,6 +85,7 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				410F91CA1246F7440044A8E2 /* Project1 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,7 +116,7 @@
 			name = Project1;
 			productInstallPath = "$(HOME)/bin";
 			productName = Project1;
-			productReference = 8DD76F6C0486A84900D96B5E /* Project1 */;
+			productReference = 410F91CA1246F7440044A8E2 /* Project1 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -126,6 +142,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
+				410F91CE1246F8010044A8E2 /* Ball.cpp in Sources */,
+				410F91D01246F8CA0044A8E2 /* Drawable.cpp in Sources */,
+				410F926512484E120044A8E2 /* Gun.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
