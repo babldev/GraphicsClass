@@ -7,27 +7,37 @@
  *
  */
 
-#include "GLWindow.h"
-
 #include "SGBall.h"
-#include "SGGun.h"
 
 class ShooterGame {
 public:
-    ShooterGame() {
-    }
+    ShooterGame() { }
     
     ~ShooterGame() {
+        delete window_;
     }
     
-    InitWithSize(int width, int height) {
-        window_ = new GLWindow(int width, int height);
-        ball_ = new SGBall(50, 50);
-        
-        window_.AddChild(ball_);
-    }
+    void Init(int* argc, char** argv, int width, int height);
+    
+    void OnDisplayEvent();
+    void OnReshapeEvent(int w, int h);
+    void OnMouseEvent(int b, int s, int x, int y);
+    void OnKeyboardEvent(unsigned char c, int x, int y);
+    void OnTick(int id);
+    
+    static void DisplayEvent() { game.OnDisplayEvent(); }
+    static void ReshapeEvent(int w, int h) { game.OnReshapeEvent(w, h); }
+    static void MouseEvent(int b, int s, int x, int y) { game.OnMouseEvent(b, s, x, y); }
+    static void KeyboardEvent(unsigned char c, int x, int y) { game.OnKeyboardEvent(c, x, y); }
+    static void Tick(int id) { game.OnTick(id); }
+    
+    static const int TIMER_DELAY;
+    
+    static ShooterGame game;
     
 protected:
     GLWindow* window_;
+    
+    // Helper pointers
     SGBall* ball_;
-}
+};

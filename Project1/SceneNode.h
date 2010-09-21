@@ -10,22 +10,27 @@
  *
  */
 
+#include <list>
+using namespace std;
+
+class GLWindow;
+
 class SceneNode {
 public:
     SceneNode() { }
 
-    virtual SceneNode() { Destroy(); }
+    virtual ~SceneNode() { Destroy(); }
 	
 	void Release() { delete this; }
 	
-	virtual void Update() {
-		for(std::list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
-			(*i)->Update();
+	virtual void DrawInWindow(GLWindow* window) {
+		for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
+			(*i)->DrawInWindow(window);
 		}
 	}
 	
 	void Destroy() {
-		for(std::list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
+		for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
 			(*i)->Release();
 		}
         
@@ -33,10 +38,10 @@ public:
 	}
 	
 	void AddChild(SceneNode* new_child) {
-		m_lstChildren.push_back(new_child);
+		children_.push_back(new_child);
 	}
 	
 protected:
-	std::list<SceneNode*> children_;    
-}
+	list<SceneNode*> children_;    
+};
 

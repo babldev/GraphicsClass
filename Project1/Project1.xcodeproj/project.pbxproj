@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		410F91CE1246F8010044A8E2 /* SGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F91CD1246F8010044A8E2 /* SGBall.cpp */; };
 		410F926C12492E1D0044A8E2 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F926B12492E1D0044A8E2 /* SceneNode.cpp */; };
 		410F926F124930980044A8E2 /* GLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F926E124930980044A8E2 /* GLWindow.cpp */; };
 		410F9272124932A80044A8E2 /* GLDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F9271124932A80044A8E2 /* GLDrawable.cpp */; };
 		410F9275124933980044A8E2 /* ShooterGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F9274124933980044A8E2 /* ShooterGame.cpp */; };
 		410F927A124934FE0044A8E2 /* GLMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F9279124934FE0044A8E2 /* GLMovable.cpp */; };
+		410F931012494E5F0044A8E2 /* SGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410F930F12494E5F0044A8E2 /* SGBall.cpp */; };
 		419D3AF61246F259007FA8A7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AF51246F259007FA8A7 /* OpenGL.framework */; };
 		419D3AFC1246F260007FA8A7 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AFB1246F260007FA8A7 /* GLUT.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -35,8 +35,6 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		410F91CA1246F7440044A8E2 /* Project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project1; sourceTree = BUILT_PRODUCTS_DIR; };
-		410F91CC1246F8010044A8E2 /* SGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBall.h; sourceTree = "<group>"; };
-		410F91CD1246F8010044A8E2 /* SGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGBall.cpp; sourceTree = "<group>"; };
 		410F926A12492E1D0044A8E2 /* SceneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneNode.h; sourceTree = "<group>"; };
 		410F926B12492E1D0044A8E2 /* SceneNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneNode.cpp; sourceTree = "<group>"; };
 		410F926D124930980044A8E2 /* GLWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLWindow.h; sourceTree = "<group>"; };
@@ -47,6 +45,8 @@
 		410F9274124933980044A8E2 /* ShooterGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShooterGame.cpp; sourceTree = "<group>"; };
 		410F9278124934FE0044A8E2 /* GLMovable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMovable.h; sourceTree = "<group>"; };
 		410F9279124934FE0044A8E2 /* GLMovable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLMovable.cpp; sourceTree = "<group>"; };
+		410F930E12494E5F0044A8E2 /* SGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBall.h; sourceTree = "<group>"; };
+		410F930F12494E5F0044A8E2 /* SGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGBall.cpp; sourceTree = "<group>"; };
 		419D3AF51246F259007FA8A7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		419D3AFB1246F260007FA8A7 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C6859E8B029090EE04C91782 /* Project1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Project1.1; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		410F9277124933CB0044A8E2 /* ShooterGame */ = {
 			isa = PBXGroup;
 			children = (
-				410F91CC1246F8010044A8E2 /* SGBall.h */,
-				410F91CD1246F8010044A8E2 /* SGBall.cpp */,
+				410F930E12494E5F0044A8E2 /* SGBall.h */,
+				410F930F12494E5F0044A8E2 /* SGBall.cpp */,
 			);
 			name = ShooterGame;
 			sourceTree = "<group>";
@@ -173,12 +173,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
-				410F91CE1246F8010044A8E2 /* SGBall.cpp in Sources */,
 				410F926C12492E1D0044A8E2 /* SceneNode.cpp in Sources */,
 				410F926F124930980044A8E2 /* GLWindow.cpp in Sources */,
 				410F9272124932A80044A8E2 /* GLDrawable.cpp in Sources */,
 				410F9275124933980044A8E2 /* ShooterGame.cpp in Sources */,
 				410F927A124934FE0044A8E2 /* GLMovable.cpp in Sources */,
+				410F931012494E5F0044A8E2 /* SGBall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

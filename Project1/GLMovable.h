@@ -10,7 +10,9 @@
 #include "GLDrawable.h"
 
 class GLMovable : public GLDrawable {
-    GLMovable(float x, float y) : x_(x), y_(y) { }
+public:
+    GLMovable(float x, float y) : x_(x), y_(y), dx_(0), dy_(0), ddx_(0), ddy_(0) { }
+    ~GLMovable() { }
     
     void set_x(float x) { x_ = x; }
     void set_y(float y) { y_ = y; }
@@ -30,8 +32,10 @@ class GLMovable : public GLDrawable {
     float ddx() { return ddx_; }
     float ddy() { return ddy_; }
     
+    void DrawInWindow(GLWindow* window) { }
+    
 protected:
-    float x_ = 0, y_ = 0;
-    float dx_ = 0, dy_ = 0;
-    float ddx_ = 0, ddy_ = 0;
-}
+    float x_, y_;
+    float dx_, dy_;
+    float ddx_, ddy_;
+};

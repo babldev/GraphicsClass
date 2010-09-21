@@ -7,7 +7,9 @@
  *
  */
 
+#include "GLWindow.h"
+
 class GLDrawable : public SceneNode {
 public:
-    virtual void DrawInWindow(GLWindow* window);
+    virtual void DrawInWindow(GLWindow* window) { }
 };

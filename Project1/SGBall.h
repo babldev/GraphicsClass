@@ -7,18 +7,19 @@
  *
  */
 
-#include <GLUT/GLUT.h>
-#include <OpenGL/OpenGL.h>
-
 #include "GLMovable.h"
 
-class SGBall: public GLMovable {
+class SGBall : public GLMovable {
 public:
-	SGBall(float x, float y, float width) : GLMovable(x, y),
-            width_(width) { }
+	SGBall(float x, float y, float radius) : GLMovable(x, y),
+            radius_(radius) { }
+    ~SGBall() { }
 	
-	virtual void DrawInWindow(GLWindow* window);
-
+	void DrawInWindow(GLWindow* window);
+    
+    static const float kDeg2Rad;
+    static const int kVertexCount;
+    
 protected:
-	float width_;
+	float radius_;
 };
