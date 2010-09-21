@@ -11,8 +11,10 @@
 
 class SGBall : public GLMovable {
 public:
-	SGBall(float x, float y, float radius) : GLMovable(x, y),
-            radius_(radius) { }
+	SGBall(Vector2d pos, float radius) : GLMovable(pos),
+            radius_(radius) {
+        acc_ = Vector2d(0, -1);
+    }
     ~SGBall() { }
 	
 	void DrawInWindow(GLWindow* window);

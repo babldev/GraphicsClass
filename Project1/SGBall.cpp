@@ -18,7 +18,7 @@
 const float SGBall::kDeg2Rad = 3.14159/180;
 const int SGBall::kVertexCount = 60;
 
-void SGBall::DrawInWindow(GLWindow* window) {
+void SGBall::DrawInWindow(GLWindow* win) {
     cout << "Drawing ball..." << endl;
     
 	glBegin(GL_POLYGON);
@@ -26,7 +26,11 @@ void SGBall::DrawInWindow(GLWindow* window) {
     
 	for (int i = 0; i < 360; i += (360 / kVertexCount)) {
 		float deg_in_rad = i * kDeg2Rad;
-		glVertex3f(cos(deg_in_rad) * radius_ + x_, sin(deg_in_rad) * radius_ + y_, 0.0f);
+        
+        GLfloat x_pixel = win->GLValForXPixel(cos(deg_in_rad) * radius_ + pos_.x);
+        GLfloat y_pixel = win->GLValForYPixel(sin(deg_in_rad) * radius_ + pos_.y);
+        
+		glVertex3f(x_pixel, y_pixel, 0.0f);
 	}
     
     glEnd();

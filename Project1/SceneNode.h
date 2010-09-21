@@ -28,6 +28,8 @@ public:
 			(*i)->DrawInWindow(window);
 		}
 	}
+    
+    virtual void Tick(int time_elapsed) { }
 	
 	void Destroy() {
 		for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {

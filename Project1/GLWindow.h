@@ -30,6 +30,8 @@ public:
     }
     
     void Draw();
+    
+    void Tick(int time_elapsed);
 	
 	void Destroy() {
 		for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
@@ -42,6 +44,14 @@ public:
 	void AddChild(SceneNode* new_child) {
 		children_.push_back(new_child);
 	}
+    
+    float GLValForXPixel(float pixels) {
+        return pixels / (float) width_;
+    }
+    
+    float GLValForYPixel(float pixels) {
+        return pixels / (float) height_;
+    }
     
 protected:
     int width_;

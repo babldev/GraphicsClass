@@ -13,10 +13,30 @@
 #include <OpenGL/OpenGL.h>
 
 #include <iostream>
+#include <sys/timeb.h>
 
 ShooterGame ShooterGame::game = ShooterGame();
 
 const int ShooterGame::TIMER_DELAY = 10000;
+
+int GetMilliCount()
+{
+    // Something like GetTickCount but portable
+    // It rolls over every ~ 12.1 days (0x100000/24/60/60)
+    // Use GetMilliSpan to correct for rollover
+    timeb tb;
+    ftime( &tb );
+    int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
+    return nCount;
+}
+
+int GetMilliSpan( int nTimeStart )
+{
+    int nSpan = GetMilliCount() - nTimeStart;
+    if ( nSpan < 0 )
+        nSpan += 0x100000 * 1000;
+    return nSpan;
+}
 
 void ShooterGame::Init(int* argc, char** argv, int width, int height) {  
     // Create window
@@ -24,7 +44,7 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     window_->Init(argc, argv, width, height, 0, 0);
     
     // Add objects
-    ball_ = new SGBall(0.5, 0.5, 0.2);
+    ball_ = new SGBall(Vector2d(300, 300), 100);
     window_->AddChild(ball_);
     
     // Terminal instructions
@@ -41,7 +61,9 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     glutReshapeFunc(ShooterGame::ReshapeEvent);
     glutMouseFunc(ShooterGame::MouseEvent);
     glutKeyboardFunc(ShooterGame::KeyboardEvent);
-    glutTimerFunc(TIMER_DELAY, ShooterGame::Tick, 0);
+    glutIdleFunc(ShooterGame::Tick);
+    
+    last_tick_ = GetMilliCount();
     
     // Run
     glutMainLoop();
@@ -58,6 +80,8 @@ void ShooterGame::OnDisplayEvent(void) {
 }
 
 void ShooterGame::OnReshapeEvent(int w, int h) {
+    window_->SetDimensions(w, h);
+    
     cout << "MyReshape called width=" << w << " height=" << h << endl;
     glViewport (0, 0, w, h);                    // update the viewport
     glMatrixMode(GL_PROJECTION);                // update projection
@@ -89,8 +113,9 @@ void ShooterGame::OnKeyboardEvent(unsigned char c, int x, int y) {
     }
 }
 
-void ShooterGame::OnTick(int id) {
-    cout << "Timer just went off.  Reversing colors." << endl;
-    glutPostRedisplay();                        // request redraw
-    glutTimerFunc(TIMER_DELAY, ShooterGame::Tick, 0);     // reset timer for 10 seconds
+void ShooterGame::OnTick() {
+    int time_elapsed = GetMilliSpan(last_tick_);
+    window_->Tick(time_elapsed);
+    last_tick_ += time_elapsed;
+    glutPostRedisplay();
 }

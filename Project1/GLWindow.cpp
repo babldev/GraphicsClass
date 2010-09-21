@@ -15,6 +15,8 @@
 #include <iostream>
 
 void GLWindow::Init(int* argc, char** argv, int width, int height, int x, int y) {
+    SetDimensions(width, height);
+    
     glutInit(argc, argv);                      // OpenGL initializations
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);// double buffering and RGB
     glutInitWindowSize(800, 600);               // create a 400x400 window
@@ -23,9 +25,13 @@ void GLWindow::Init(int* argc, char** argv, int width, int height, int x, int y)
 }
 
 void GLWindow::Draw() {
-    cout << "Drawing!" << endl;
-    
     for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
         (*i)->DrawInWindow(this);
+    }
+}
+
+void GLWindow::Tick(int time_elapsed) {
+    for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
+        (*i)->Tick(time_elapsed);
     }
 }

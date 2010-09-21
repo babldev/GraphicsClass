@@ -8,34 +8,17 @@
  */
 
 #include "GLDrawable.h"
+#include "Vector2d.h"
 
 class GLMovable : public GLDrawable {
 public:
-    GLMovable(float x, float y) : x_(x), y_(y), dx_(0), dy_(0), ddx_(0), ddy_(0) { }
+    GLMovable(Vector2d pos) : pos_(pos) { }
     ~GLMovable() { }
     
-    void set_x(float x) { x_ = x; }
-    void set_y(float y) { y_ = y; }
-    
-    float x() { return x_; }
-    float y() { return y_; }
-    
-    void set_dx(float dx) { dx_ = dx; }
-    void set_dy(float dy) { dy_ = dy; }
-    
-    float dx() { return dx_; }
-    float dy() { return dy_; }
-    
-    void set_ddx(float ddx) { ddx_ = ddx; }
-    void set_ddy(float ddy) { ddy_ = ddy; }
-    
-    float ddx() { return ddx_; }
-    float ddy() { return ddy_; }
-    
     void DrawInWindow(GLWindow* window) { }
+    void Tick(int time_elapsed);
     
-protected:
-    float x_, y_;
-    float dx_, dy_;
-    float ddx_, ddy_;
+    // Variables
+    Vector2d pos_, vel_, acc_;
+    static const double ANIMATION_SPEED;
 };
