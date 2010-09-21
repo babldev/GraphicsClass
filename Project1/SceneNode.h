@@ -3,7 +3,7 @@
  *  Project1
  *
  *  Created by Brady Law on 9/21/10.
- *  Copyright 2010 __MyCompanyName__. All rights reserved.
+ *  Copyright 2010 Brady Law. All rights reserved.
  *
  *  Code made with some help from:
  *  http://www.gamedev.net/reference/programming/features/scenegraph/page2.asp
