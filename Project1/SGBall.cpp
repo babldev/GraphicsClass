@@ -17,7 +17,7 @@
 #include <iostream>
 
 const float SGBall::kDeg2Rad = 3.14159/180;
-const int SGBall::kVertexCount = 60;
+const int SGBall::kVertexCount = 30;
 const float SGBall::kWallDampening = 0.6;
 
 void SGBall::Draw() {

@@ -42,7 +42,7 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     window_ = new GLWindow();
     window_->Init(argc, argv, width, height, 0, 0);
     
-    ball_ = new SGBall(Vector2d(300, 300), 20);
+    ball_ = new SGBall(Vector2d(300, 400), 20);
     window_->AddChild(ball_);
     
     cannon_ = new SGCannon(Vector2d(0.5 * width, SGCannon::kHeight));
