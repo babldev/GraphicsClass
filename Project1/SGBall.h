@@ -13,15 +13,18 @@ class SGBall : public GLMovable {
 public:
 	SGBall(Vector2d pos, float radius) : GLMovable(pos),
             radius_(radius) {
-        acc_ = Vector2d(0, -1);
+        acc_ = Vector2d(0, -2);
+        vel_ = Vector2d(40, 40);
     }
     ~SGBall() { }
 	
-	void DrawInWindow(GLWindow* window);
+	virtual void Draw();
+    virtual void Tick(int time_elapsed);
     
     static const float kDeg2Rad;
     static const int kVertexCount;
-    
+    static const float kWallDampening;
 protected:
 	float radius_;
+    bool alive_; // True if the ball is still on screen
 };

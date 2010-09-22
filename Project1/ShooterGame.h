@@ -7,7 +7,9 @@
  *
  */
 
+#include "GLWindow.h"
 #include "SGBall.h"
+#include "SGCannon.h"
 
 class ShooterGame {
 public:
@@ -40,6 +42,7 @@ protected:
     
     // Helper pointers
     SGBall* ball_;
+    SGCannon* cannon_;
     
     int last_tick_;
 };

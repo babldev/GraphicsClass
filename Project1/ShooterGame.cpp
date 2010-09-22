@@ -19,8 +19,9 @@ ShooterGame ShooterGame::game = ShooterGame();
 
 const int ShooterGame::TIMER_DELAY = 10000;
 
-int GetMilliCount()
-{
+// From http://www.firstobject.com/getmillicount-milliseconds-portable-c++.htm
+// TODO: I don't like this function...
+int GetMilliCount() {
     // Something like GetTickCount but portable
     // It rolls over every ~ 12.1 days (0x100000/24/60/60)
     // Use GetMilliSpan to correct for rollover
@@ -30,8 +31,7 @@ int GetMilliCount()
     return nCount;
 }
 
-int GetMilliSpan( int nTimeStart )
-{
+int GetMilliSpan(int nTimeStart) {
     int nSpan = GetMilliCount() - nTimeStart;
     if ( nSpan < 0 )
         nSpan += 0x100000 * 1000;
@@ -39,13 +39,14 @@ int GetMilliSpan( int nTimeStart )
 }
 
 void ShooterGame::Init(int* argc, char** argv, int width, int height) {  
-    // Create window
     window_ = new GLWindow();
     window_->Init(argc, argv, width, height, 0, 0);
     
-    // Add objects
-    ball_ = new SGBall(Vector2d(300, 300), 100);
+    ball_ = new SGBall(Vector2d(300, 300), 20);
     window_->AddChild(ball_);
+    
+    cannon_ = new SGCannon(Vector2d(0.5 * width, SGCannon::kHeight));
+    window_->AddChild(cannon_);
     
     // Terminal instructions
     cout << "\n\
@@ -70,7 +71,6 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
 }
 
 void ShooterGame::OnDisplayEvent(void) {
-    cout << "MyDisplay called" << endl;
     glClearColor(0.0, 0.0, 0.0, 1.0);           // background is gray
     glClear(GL_COLOR_BUFFER_BIT);               // clear the window
     
@@ -106,6 +106,12 @@ void ShooterGame::OnKeyboardEvent(unsigned char c, int x, int y) {
     switch (c) {                                // c is the key that is hit
         case 'q':                               // 'q' means quit
             exit(0);
+            break;
+        case 'a':
+            cannon_->MoveLeft();
+            break;
+        case 'f':
+            cannon_->MoveRight();
             break;
         default:
             cout << "Hit q to quit.  All other characters ignored" << endl;

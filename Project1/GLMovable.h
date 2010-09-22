@@ -7,6 +7,9 @@
  *
  */
 
+#ifndef INC_GLMOVABLE_H
+#define INC_GLMOVABLE_H
+
 #include "GLDrawable.h"
 #include "Vector2d.h"
 
@@ -15,10 +18,12 @@ public:
     GLMovable(Vector2d pos) : pos_(pos) { }
     ~GLMovable() { }
     
-    void DrawInWindow(GLWindow* window) { }
-    void Tick(int time_elapsed);
+    virtual void Draw() { }
+    virtual void Tick(int time_elapsed);
     
     // Variables
     Vector2d pos_, vel_, acc_;
     static const double ANIMATION_SPEED;
 };
+
+#endif /* INC_GLMOVABLE_H */

@@ -7,7 +7,13 @@
  *
  */
 
-#include "SceneNode.h"
+#ifndef INC_GLWINDOW_H
+#define INC_GLWINDOW_H
+
+#include "GLDrawable.h"
+
+#include <list>
+using namespace std;
 
 class GLWindow {
 public:
@@ -34,15 +40,16 @@ public:
     void Tick(int time_elapsed);
 	
 	void Destroy() {
-		for(list<SceneNode*>::iterator i = children_.begin(); i != children_.end(); i++) {
+		for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
 			(*i)->Release();
 		}
         
 		children_.clear();
 	}
 	
-	void AddChild(SceneNode* new_child) {
+	void AddChild(GLDrawable* new_child) {
 		children_.push_back(new_child);
+        new_child->set_window(this);
 	}
     
     float GLValForXPixel(float pixels) {
@@ -57,5 +64,7 @@ protected:
     int width_;
     int height_;
     
-    list<SceneNode*> children_; 
+    list<GLDrawable*> children_; 
 };
+
+#endif /* INC_GLWINDOW_H */
