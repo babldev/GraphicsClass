@@ -99,6 +99,11 @@ void ShooterGame::OnMouseEvent(int b, int s, int x, int y) {      // mouse click
 		<< x << " and y=" << y << endl;
         if (b == GLUT_LEFT_BUTTON) {
             cout << "Left mouse click." << endl;
+            
+            SGBullet* new_bullet = new SGBullet(cannon_->pos_, cannon_->aim_vector());
+            bullets_.insert(new_bullet);
+            window_->AddChild(new_bullet);
+            
             glutPostRedisplay();
         }
     }

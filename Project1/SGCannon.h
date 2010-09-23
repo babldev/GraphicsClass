@@ -20,6 +20,7 @@ public:
     void MoveRight();
     
     void set_target(const Vector2d target);
+    const Vector2d aim_vector() { return aim_vector_; }
     
     // Inherited methods
     virtual void Draw();

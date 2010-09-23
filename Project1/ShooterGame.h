@@ -8,8 +8,13 @@
  */
 
 #include "GLWindow.h"
+
 #include "SGBall.h"
 #include "SGCannon.h"
+#include "SGBullet.h"
+
+#include <set>
+using namespace std;
 
 class ShooterGame {
 public:
@@ -45,6 +50,7 @@ protected:
     // Helper pointers
     SGBall* ball_;
     SGCannon* cannon_;
+    set<SGBullet*> bullets_;
     
     int last_tick_;
 };

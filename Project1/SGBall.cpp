@@ -16,9 +16,6 @@
 #include <cmath>                        // standard definitions
 #include <iostream>
 
-const int SGBall::kVertexCount = 30;
-const float SGBall::kWallDampening = 0.6;
-
 void SGBall::Draw() {
 	glBegin(GL_POLYGON);
         glColor3f(1.0, 1.0, 1.0);
@@ -54,3 +51,8 @@ void SGBall::Tick(int time_elapsed) {
         vel_.y *= -1 * kWallDampening;
     }
 }
+
+Circle SGBall::Shape() {
+    return Circle(pos_, radius_);
+}
+

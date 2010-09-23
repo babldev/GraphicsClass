@@ -8,6 +8,7 @@
  */
 
 #include "GLMovable.h"
+#include "Circle.h"
 
 class SGBall : public GLMovable {
 public:
@@ -20,9 +21,10 @@ public:
 	
 	virtual void Draw();
     virtual void Tick(int time_elapsed);
+    Circle Shape();
     
-    static const int kVertexCount;
-    static const float kWallDampening;
+    static const int kVertexCount = 30;
+    static const float kWallDampening = 0.6;
 protected:
 	float radius_;
     bool alive_; // True if the ball is still on screen

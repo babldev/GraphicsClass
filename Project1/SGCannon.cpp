@@ -18,7 +18,6 @@
 
 void SGCannon::Draw() {
     aim_vector_ = target_ - pos_;
-    cout << "Aim vector: " << aim_vector_.x << ", " << aim_vector_.y << endl;
     GLfloat angle = atan2(aim_vector_.y, aim_vector_.x) * GLWindow::RADIANS_TO_DEGREES - 90;
     
     glColor3f(0.0, 1.0, 1.0);

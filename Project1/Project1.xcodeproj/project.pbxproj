@@ -16,6 +16,8 @@
 		4164244D1249909A00114E76 /* SGCannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4164244C1249909A00114E76 /* SGCannon.cpp */; };
 		419D3AF61246F259007FA8A7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AF51246F259007FA8A7 /* OpenGL.framework */; };
 		419D3AFC1246F260007FA8A7 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AFB1246F260007FA8A7 /* GLUT.framework */; };
+		41DDBFB3124AE34C00ED1897 /* SGBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41DDBFB2124AE34C00ED1897 /* SGBullet.cpp */; };
+		41DDC01D124AF0FD00ED1897 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41DDC01C124AF0FD00ED1897 /* Geometry.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Project1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Project1.1 */; };
 /* End PBXBuildFile section */
@@ -53,6 +55,12 @@
 		419D3AF51246F259007FA8A7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		419D3AFB1246F260007FA8A7 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		41C8666A1249AE5C00D8F5F6 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		41DDBFB1124AE34C00ED1897 /* SGBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBullet.h; sourceTree = "<group>"; };
+		41DDBFB2124AE34C00ED1897 /* SGBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGBullet.cpp; sourceTree = "<group>"; };
+		41DDC017124AECE800ED1897 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
+		41DDC01A124AF09D00ED1897 /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
+		41DDC01B124AF0FD00ED1897 /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
+		41DDC01C124AF0FD00ED1897 /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* Project1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Project1.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +113,7 @@
 		410F9276124933A00044A8E2 /* GraphicsLib */ = {
 			isa = PBXGroup;
 			children = (
+				41DDC013124AEC6900ED1897 /* Geometry */,
 				410F9406124959560044A8E2 /* Math */,
 				410F926D124930980044A8E2 /* GLWindow.h */,
 				410F926E124930980044A8E2 /* GLWindow.cpp */,
@@ -123,6 +132,8 @@
 				410F930F12494E5F0044A8E2 /* SGBall.cpp */,
 				4164244B1249909A00114E76 /* SGCannon.h */,
 				4164244C1249909A00114E76 /* SGCannon.cpp */,
+				41DDBFB1124AE34C00ED1897 /* SGBullet.h */,
+				41DDBFB2124AE34C00ED1897 /* SGBullet.cpp */,
 			);
 			name = ShooterGame;
 			sourceTree = "<group>";
@@ -134,6 +145,17 @@
 				410F9404124959480044A8E2 /* Vector2d.cpp */,
 			);
 			name = Math;
+			sourceTree = "<group>";
+		};
+		41DDC013124AEC6900ED1897 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				41DDC017124AECE800ED1897 /* Rectangle.h */,
+				41DDC01A124AF09D00ED1897 /* Circle.h */,
+				41DDC01B124AF0FD00ED1897 /* Geometry.h */,
+				41DDC01C124AF0FD00ED1897 /* Geometry.cpp */,
+			);
+			name = Geometry;
 			sourceTree = "<group>";
 		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
@@ -198,6 +220,8 @@
 				410F931012494E5F0044A8E2 /* SGBall.cpp in Sources */,
 				410F9405124959480044A8E2 /* Vector2d.cpp in Sources */,
 				4164244D1249909A00114E76 /* SGCannon.cpp in Sources */,
+				41DDBFB3124AE34C00ED1897 /* SGBullet.cpp in Sources */,
+				41DDC01D124AF0FD00ED1897 /* Geometry.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
