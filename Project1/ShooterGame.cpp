@@ -141,7 +141,7 @@ void ShooterGame::OnTick() {
             delete *bullet_it;
             bullets_.erase(bullet_it);
         } else {
-            // TODO Clean this
+            // TODO: Clean this
             // Detect ball collisions
             Circle bullet_shape = (*bullet_it)->Shape();
             Circle ball_shape = ball_->Shape();
