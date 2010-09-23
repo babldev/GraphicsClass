@@ -13,14 +13,23 @@
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>
 
+#include <cmath>
 #include <iostream>
 
 void SGCannon::Draw() {
+    aim_vector_ = target_ - pos_;
+    cout << "Aim vector: " << aim_vector_.x << ", " << aim_vector_.y << endl;
+    GLfloat angle = atan2(aim_vector_.y, aim_vector_.x) * GLWindow::RADIANS_TO_DEGREES - 90;
+    
     glColor3f(0.0, 1.0, 1.0);
-    glRectf(window_->GLValForXPixel(pos_.x - 0.5*kWidth),
-            window_->GLValForYPixel(pos_.y - 0.5*kHeight),
-            window_->GLValForXPixel(pos_.x + 0.5*kWidth),
-            window_->GLValForYPixel(pos_.y + 0.5*kHeight));
+    glPushMatrix();
+        glTranslatef(window_->GLValForXPixel(pos_.x), window_->GLValForYPixel(pos_.y), 0);
+        glRotatef(angle, 0, 0, 1);
+        glRectf(window_->GLValForXPixel(-0.5*kWidth),
+                window_->GLValForYPixel(-0.5*kHeight),
+                window_->GLValForXPixel(0.5*kWidth),
+                window_->GLValForYPixel(0.5*kHeight));
+    glPopMatrix();
 }
 
 void SGCannon::MoveLeft() {
@@ -33,6 +42,10 @@ void SGCannon::MoveRight() {
     cout << "Moving cannon right" << endl;
     if (pos_.x + MOVE_DISTANCE + 0.5*kWidth <= window_->width())
         pos_.x += MOVE_DISTANCE;
+}
+
+void SGCannon::set_target(const Vector2d target) {
+    target_ = target;
 }
 
 void SGCannon::Tick(int time_elapsed) {

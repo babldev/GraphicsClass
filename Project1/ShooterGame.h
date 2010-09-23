@@ -25,12 +25,14 @@ public:
     void OnReshapeEvent(int w, int h);
     void OnMouseEvent(int b, int s, int x, int y);
     void OnKeyboardEvent(unsigned char c, int x, int y);
+    void OnMouseMove(int x, int y);
     void OnTick();
     
     static void DisplayEvent() { game.OnDisplayEvent(); }
     static void ReshapeEvent(int w, int h) { game.OnReshapeEvent(w, h); }
     static void MouseEvent(int b, int s, int x, int y) { game.OnMouseEvent(b, s, x, y); }
     static void KeyboardEvent(unsigned char c, int x, int y) { game.OnKeyboardEvent(c, x, y); }
+    static void MouseMove(int x, int y) { game.OnMouseMove(x, y); }
     static void Tick() { game.OnTick(); }
     
     static const int TIMER_DELAY;

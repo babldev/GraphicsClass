@@ -16,7 +16,6 @@
 #include <cmath>                        // standard definitions
 #include <iostream>
 
-const float SGBall::kDeg2Rad = 3.14159/180;
 const int SGBall::kVertexCount = 30;
 const float SGBall::kWallDampening = 0.6;
 
@@ -25,7 +24,7 @@ void SGBall::Draw() {
         glColor3f(1.0, 1.0, 1.0);
         
         for (int i = 0; i < 360; i += (360 / kVertexCount)) {
-            float deg_in_rad = i * kDeg2Rad;
+            float deg_in_rad = i * GLWindow::DEGREES_TO_RADIANS;
             
             GLfloat x_pixel = window_->GLValForXPixel(cos(deg_in_rad) * radius_ + pos_.x);
             GLfloat y_pixel = window_->GLValForYPixel(sin(deg_in_rad) * radius_ + pos_.y);

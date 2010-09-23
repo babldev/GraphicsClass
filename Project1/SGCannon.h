@@ -19,7 +19,7 @@ public:
     void MoveLeft();
     void MoveRight();
     
-    void AimToVector(const Vector2d* target);
+    void set_target(const Vector2d target);
     
     // Inherited methods
     virtual void Draw();
@@ -32,5 +32,7 @@ public:
     static const int MOVE_DISTANCE = 50;
     
 private:
+    Vector2d target_;
+    Vector2d aim_vector_;
     int moving_;
 };

@@ -21,7 +21,6 @@ public:
 	virtual void Draw();
     virtual void Tick(int time_elapsed);
     
-    static const float kDeg2Rad;
     static const int kVertexCount;
     static const float kWallDampening;
 protected:

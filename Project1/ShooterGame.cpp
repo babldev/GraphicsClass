@@ -63,6 +63,8 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     glutMouseFunc(ShooterGame::MouseEvent);
     glutKeyboardFunc(ShooterGame::KeyboardEvent);
     glutIdleFunc(ShooterGame::Tick);
+    glutPassiveMotionFunc(ShooterGame::MouseMove);
+    glutMotionFunc(ShooterGame::MouseMove);
     
     last_tick_ = GetMilliCount();
     
@@ -124,4 +126,10 @@ void ShooterGame::OnTick() {
     window_->Tick(time_elapsed);
     last_tick_ += time_elapsed;
     glutPostRedisplay();
+}
+
+void ShooterGame::OnMouseMove(int x, int y) {
+    // Invert the y value. Glut has upper left as origin, ShooterGame has it as the bottom left.
+    Vector2d mouse_pos = Vector2d(x, window_->height() - y);
+    cannon_->set_target(mouse_pos);
 }
