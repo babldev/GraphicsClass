@@ -24,6 +24,6 @@ public:
     static const int kShootSpeed = 80;
     static const int kVertexCount = 10;
     static const int kRadius = 5;
-protected:
+
     bool alive_; // True if the ball is still on screen
 };

@@ -8,6 +8,7 @@
  */
 
 #include "ShooterGame.h"
+#include "Geometry.h"
 
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>
@@ -42,7 +43,7 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     window_ = new GLWindow();
     window_->Init(argc, argv, width, height, 0, 0);
     
-    ball_ = new SGBall(Vector2d(300, 400), 20);
+    ball_ = new SGBall(Vector2d(300, 400), 50);
     window_->AddChild(ball_);
     
     cannon_ = new SGCannon(Vector2d(0.5 * width, SGCannon::kHeight));
@@ -127,9 +128,35 @@ void ShooterGame::OnKeyboardEvent(unsigned char c, int x, int y) {
 }
 
 void ShooterGame::OnTick() {
+    // Tick the animation
     int time_elapsed = GetMilliSpan(last_tick_);
     window_->Tick(time_elapsed);
     last_tick_ += time_elapsed;
+    
+    // Remove dead bullets
+    for (set<SGBullet*>::iterator bullet_it = bullets_.begin(); bullet_it != bullets_.end();
+         ++bullet_it) {
+        if (!(*bullet_it)->alive_) {
+            window_->RemoveChild(*bullet_it);
+            delete *bullet_it;
+            bullets_.erase(bullet_it);
+        } else {
+            // TODO Clean this
+            // Detect ball collisions
+            Circle bullet_shape = (*bullet_it)->Shape();
+            Circle ball_shape = ball_->Shape();
+            
+            if (Geometry::CircleIntersectsCircle(&bullet_shape, &ball_shape)) {
+                cout << "Hit!" << endl;
+                ball_->vel_ += (Vector2d::parProject((*bullet_it)->vel_,
+                                                     ball_->vel_ - (*bullet_it)->vel_)) * 0.5;
+                window_->RemoveChild(*bullet_it);
+                delete *bullet_it;
+                bullets_.erase(bullet_it);
+            }
+        }
+    }
+        
     glutPostRedisplay();
 }
 
