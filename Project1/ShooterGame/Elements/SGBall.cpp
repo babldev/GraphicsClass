@@ -7,11 +7,11 @@
  *
  */
 
-#include "SGBall.h"
-#include "GLWindow.h"
+#include "ShooterGame/Elements/SGBall.h"
 
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>
+#include "GraphicsLib/GLWindow.h"
 
 #include <cmath>                        // standard definitions
 #include <iostream>

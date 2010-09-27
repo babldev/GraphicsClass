@@ -7,7 +7,7 @@
  *
  */
 
-#include "GLMovable.h"
+#include "GraphicsLib/GLMovable.h"
 
 void GLMovable::Tick(int time_elapsed) {
     pos_ += vel_ * time_elapsed * ANIMATION_SPEED;

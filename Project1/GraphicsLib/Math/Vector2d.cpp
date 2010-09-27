@@ -8,7 +8,7 @@
 //    Date:            Fall 2010
 //----------------------------------------------------------------------
 
-#include "Vector2d.h"
+#include "GraphicsLib/Math/Vector2d.h"
 
                                             // constructors
 Vector2d::Vector2d() : x(0), y(0) { }

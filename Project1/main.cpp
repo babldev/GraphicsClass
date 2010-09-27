@@ -7,7 +7,7 @@
  *
  */
 
-#include "ShooterGame.h"
+#include "ShooterGame/ShooterGame.h"
 
 int main(int argc, char** argv)
 {

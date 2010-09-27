@@ -7,11 +7,11 @@
  *
  */
 
-#include "SGCannon.h"
-#include "GLWindow.h"
 
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>
+#include "ShooterGame/Elements/SGCannon.h"
+#include "GraphicsLib/GLWindow.h"
 
 #include <cmath>
 #include <iostream>

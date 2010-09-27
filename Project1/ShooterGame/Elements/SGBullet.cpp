@@ -7,9 +7,9 @@
  *
  */
 
-#include "SGBullet.h"
-#include "GLWindow.h"
-#include "Geometry.h"
+#include "ShooterGame/Elements/SGBullet.h"
+#include "GraphicsLib/GLWindow.h"
+#include "GraphicsLib/Geometry/Geometry.h"
 
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>

@@ -10,9 +10,9 @@
 #ifndef INC_GEOMETRY_H
 #define INC_GEOMETRY_H
 
-#include "Rectangle.h"
-#include "Circle.h"
-#include "Vector2d.h"
+#include "GraphicsLib/Geometry/Rectangle.h"
+#include "GraphicsLib/Geometry/Circle.h"
+#include "GraphicsLib/Math/Vector2d.h"
 
 class Geometry {
 public:

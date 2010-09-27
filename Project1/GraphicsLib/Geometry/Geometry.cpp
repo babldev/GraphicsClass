@@ -7,7 +7,7 @@
  *
  */
 
-#include "Geometry.h"
+#include "GraphicsLib/Geometry/Geometry.h"
 
 // Simple line comparison
 bool Geometry::RectangleIntersectsRectangle(const Rectangle* r1, const Rectangle* r2) {

@@ -7,7 +7,7 @@
  *
  */
 
-#include "GLMovable.h"
+#include "GraphicsLib/GLMovable.h"
 
 class SGCannon : public GLMovable {
 public:

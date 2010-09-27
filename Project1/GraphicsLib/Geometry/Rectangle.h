@@ -10,7 +10,7 @@
 #ifndef INC_RECTANGLE_H
 #define INC_RECTANGLE_H
 
-#include "Vector2d.h"
+#include "GraphicsLib/Math/Vector2d.h"
 
 class Rectangle {
 public:

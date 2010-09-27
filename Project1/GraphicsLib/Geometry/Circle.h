@@ -10,7 +10,7 @@
 #ifndef INC_CIRCLE_H
 #define INC_CIRCLE_H
 
-#include "Vector2d.h"
+#include "GraphicsLib/Math/Vector2d.h"
 
 class Circle {
 public:

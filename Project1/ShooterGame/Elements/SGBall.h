@@ -7,8 +7,8 @@
  *
  */
 
-#include "GLMovable.h"
-#include "Circle.h"
+#include "GraphicsLib/GLMovable.h"
+#include "GraphicsLib/Geometry/Circle.h"
 
 class SGBall : public GLMovable {
 public:

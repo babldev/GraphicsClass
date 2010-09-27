@@ -10,8 +10,8 @@
 #ifndef INC_GLMOVABLE_H
 #define INC_GLMOVABLE_H
 
-#include "GLDrawable.h"
-#include "Vector2d.h"
+#include "GraphicsLib/GLDrawable.h"
+#include "GraphicsLib/Math/Vector2d.h"
 
 class GLMovable : public GLDrawable {
 public:

@@ -7,11 +7,11 @@
  *
  */
 
-#include "GLWindow.h"
+#include "GraphicsLib/GLWindow.h"
 
-#include "SGBall.h"
-#include "SGCannon.h"
-#include "SGBullet.h"
+#include "ShooterGame/Elements/SGBall.h"
+#include "ShooterGame/Elements/SGCannon.h"
+#include "ShooterGame/Elements/SGBullet.h"
 
 #include <set>
 using namespace std;

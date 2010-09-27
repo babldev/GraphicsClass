@@ -7,7 +7,7 @@
  *
  */
 
-#include "GLWindow.h"
+#include "GraphicsLib/GLWindow.h"
 
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>

@@ -10,8 +10,8 @@
 #ifndef INC_GLWINDOW_H
 #define INC_GLWINDOW_H
 
-#include "GLDrawable.h"
-#include "Rectangle.h"
+#include "GraphicsLib/GLDrawable.h"
+#include "GraphicsLib/Geometry/Rectangle.h"
 
 #include <list>
 using namespace std;

@@ -7,11 +7,11 @@
  *
  */
 
-#include "ShooterGame.h"
-#include "Geometry.h"
 
 #include <GLUT/GLUT.h>
 #include <OpenGL/OpenGL.h>
+#include "ShooterGame/ShooterGame.h"
+#include "GraphicsLib/Geometry/Geometry.h"
 
 #include <iostream>
 #include <sys/timeb.h>
