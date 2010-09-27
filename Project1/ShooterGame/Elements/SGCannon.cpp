@@ -7,11 +7,18 @@
  *
  */
 
-
-#include <GLUT/GLUT.h>
-#include <OpenGL/OpenGL.h>
 #include "ShooterGame/Elements/SGCannon.h"
 #include "GraphicsLib/GLWindow.h"
+
+#ifdef __APPLE__ 
+#include <OPENGL/gl.h> 
+#include <OPENGL/glu.h> 
+#include <GLUT/glut.h> 
+#else 
+#include <GL/gl.h> 
+#include <GL/glu.h> 
+#include <GL/glut.h> 
+#endif 
 
 #include <cmath>
 #include <iostream>

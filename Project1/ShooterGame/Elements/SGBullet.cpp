@@ -11,8 +11,15 @@
 #include "GraphicsLib/GLWindow.h"
 #include "GraphicsLib/Geometry/Geometry.h"
 
-#include <GLUT/GLUT.h>
-#include <OpenGL/OpenGL.h>
+#ifdef __APPLE__ 
+#include <OPENGL/gl.h> 
+#include <OPENGL/glu.h> 
+#include <GLUT/glut.h> 
+#else 
+#include <GL/gl.h> 
+#include <GL/glu.h> 
+#include <GL/glut.h> 
+#endif 
 
 #include <cmath>                        // standard definitions
 #include <iostream>
