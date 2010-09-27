@@ -62,6 +62,8 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     CMSC 427 - Project 1.\n\
     - Use 'a' and 's' to move your cannon left and right.\n\
     - Hit 'f' to enter fullscreen mode.\n\
+    - Hit '+' and '-' to alter the animation speed\n\
+      (make sure to hit shift correctly).\n\
     - Hit 'q' to quit.\n\
     -----------------------------------------------------------------------\n";
     
@@ -110,8 +112,6 @@ void ShooterGame::OnMouseEvent(int b, int s, int x, int y) {      // mouse click
         cout << "Mouse click detected at coordinates x="
         << x << " and y=" << y << endl;
         if (b == GLUT_LEFT_BUTTON) {
-            cout << "Left mouse click." << endl;
-            
             SGBullet* new_bullet = new SGBullet(cannon_->pos_, cannon_->aim_vector());
             bullets_.insert(new_bullet);
             window_->AddChild(new_bullet);
@@ -136,8 +136,12 @@ void ShooterGame::OnKeyboardEvent(unsigned char c, int x, int y) {
             ToggleFullscreen();
             break;
         case '+':
+            window_->animation_speed_ += GLWindow::ANIMATION_SPEED_INC;
+            cout << "Animation speed set to: " << window_->animation_speed_ << endl;
             break;
         case '-':
+            window_->animation_speed_ -= GLWindow::ANIMATION_SPEED_INC;
+            cout << "Animation speed set to: " << window_->animation_speed_ << endl;
             break;
         default:
             cout << "Hit q to quit.  All other characters ignored" << endl;
@@ -183,7 +187,6 @@ void ShooterGame::OnTick() {
                                                               (*bullet_it)->pos_ - ball_->pos_);
                 Vector2d collision_perp = bullet_rel_vel - collision_par;
                 
-                cout << "Hit!" << endl;
                 ball_->vel_ += collision_par * 0.5;
                 ball_->rvel_ += -0.0001 * (bullet_rel_vel.x * collision_perp.y - 
                                       bullet_rel_vel.y * collision_perp.x);

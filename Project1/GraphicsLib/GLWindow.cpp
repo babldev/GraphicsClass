@@ -29,6 +29,8 @@ void GLWindow::Init(int* argc, char** argv, int width, int height, int x, int y)
     glutInitWindowSize(800, 600);               // create a 400x400 window
     glutInitWindowPosition(0, 0);               // ...in the upper left
     glutCreateWindow(argv[0]);                  // create the window
+    
+    animation_speed_ = 0.01; // Set default animation speed
 }
 
 void GLWindow::Draw() {

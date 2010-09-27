@@ -59,13 +59,22 @@ public:
     void RemoveChild(GLDrawable* child) {
         children_.remove(child);
     }
-        
+    
+    float animation_speed() {
+        return animation_speed_;
+    }
+    
+    float animation_speed_;
+
     static const float DEGREES_TO_RADIANS = 3.14159/180;
     static const float RADIANS_TO_DEGREES = 180/3.14159;
+    static const float ANIMATION_SPEED_INC = 0.002;
+
 protected:
+    // Window size
     int width_;
     int height_;
-    
+        
     list<GLDrawable*> children_; 
 };
 

@@ -77,7 +77,7 @@ void SGBall::Tick(int time_elapsed) {
     }
     
     // Rotate update (in degrees)
-    rot_ += fmod(rvel_ * time_elapsed * GLMovable::ROTATE_CONSTANT * GLMovable::ANIMATION_SPEED,
+    rot_ += fmod(rvel_ * time_elapsed * GLMovable::ROTATE_CONSTANT * window_->animation_speed(),
                  360);
 }
 
