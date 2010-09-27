@@ -3,11 +3,33 @@ CMSC 427 - Fall 2010
 Project 1
 UID: 109364898
 
-Written on Mac OSX 10.6 Leopard
+******************
+*** BubbleGame ***
+******************
+Written in XCode on Mac OSX 10.6 Leopard
 
- -how to compile
- -files
- -know issues
- -special features :)
- -Instructions
- -citation on resources you used
+*** Compiling ***
+On OSX:
+1) Open .xcodeproj file in XCode.
+2) Make sure the OpenGL and GLUT frameworks are included under the project (and not in red). If this is not the case,
+right click the project under "Groups & Files" on the left and choose "Add > Existing Frameworks"
+3) Choose build and run
+
+*** Gameplay ***
+See terminal output for gameplay instructions.
+
+*** Bugs known ***
+None right now...
+
+*** Special Features ***
+- Fullscreen mode
+
+TODO: Balloon Physics
+TODO: Adjust gameplay speed
+TODO: Hit 'r' to reset
+TODO: Makefile/Unix compatibility?
+
+EXTRA: Better Graphics
+EXTRA: Multiple balloons
+EXTRA: Start up screen
+EXTRA: Special effects
