@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412265A41251456E00AE1532 /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412265A31251456E00AE1532 /* Circle.cpp */; };
+		412265A61251457B00AE1532 /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412265A51251457B00AE1532 /* Rectangle.cpp */; };
 		419D3AF61246F259007FA8A7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AF51246F259007FA8A7 /* OpenGL.framework */; };
 		419D3AFC1246F260007FA8A7 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419D3AFB1246F260007FA8A7 /* GLUT.framework */; };
 		41E158D512510F4300772CAB /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E158C912510F4300772CAB /* Geometry.cpp */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		410F91CA1246F7440044A8E2 /* Project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project1; sourceTree = BUILT_PRODUCTS_DIR; };
+		412265A31251456E00AE1532 /* Circle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
+		412265A51251457B00AE1532 /* Rectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
 		419D3AF51246F259007FA8A7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		419D3AFB1246F260007FA8A7 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		41C8666A1249AE5C00D8F5F6 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -126,9 +130,11 @@
 		41E158C712510F4300772CAB /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				412265A31251456E00AE1532 /* Circle.cpp */,
 				41E158C812510F4300772CAB /* Circle.h */,
 				41E158C912510F4300772CAB /* Geometry.cpp */,
 				41E158CA12510F4300772CAB /* Geometry.h */,
+				412265A51251457B00AE1532 /* Rectangle.cpp */,
 				41E158CB12510F4300772CAB /* Rectangle.h */,
 			);
 			name = Geometry;
@@ -233,6 +239,8 @@
 				41E158E9125111B300772CAB /* SGBullet.cpp in Sources */,
 				41E158EA125111B300772CAB /* SGCannon.cpp in Sources */,
 				41E158EB125111B300772CAB /* ShooterGame.cpp in Sources */,
+				412265A41251456E00AE1532 /* Circle.cpp in Sources */,
+				412265A61251457B00AE1532 /* Rectangle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

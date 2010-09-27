@@ -2,6 +2,7 @@
 *.swp
 
 build/
+*.o
 
 *.pbxuser
 *.perspective
