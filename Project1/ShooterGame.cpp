@@ -65,7 +65,7 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     glutKeyboardFunc(ShooterGame::KeyboardEvent);
     glutIdleFunc(ShooterGame::Tick);
     glutPassiveMotionFunc(ShooterGame::MouseMove);
-    glutMotionFunc(ShooterGame::MouseMove);
+    glutMotionFunc(ShooterGame::MouseMove);  
     
     last_tick_ = GetMilliCount();
     
@@ -89,7 +89,7 @@ void ShooterGame::OnReshapeEvent(int w, int h) {
     glViewport (0, 0, w, h);                    // update the viewport
     glMatrixMode(GL_PROJECTION);                // update projection
     glLoadIdentity();
-    gluOrtho2D(0.0, 1.0, 0.0, 1.0);             // map unit square to viewport
+    gluOrtho2D(0.0, w, 0.0, h);             // map unit square to viewport
     glMatrixMode(GL_MODELVIEW);
     glutPostRedisplay();                        // request redisplay
 }

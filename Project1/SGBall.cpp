@@ -17,18 +17,37 @@
 #include <iostream>
 
 void SGBall::Draw() {
+    glPushMatrix();
+    
+    glTranslatef(pos_.x, pos_.y, 0);
 	glBegin(GL_POLYGON);
         glColor3f(1.0, 1.0, 1.0);
         
         for (int i = 0; i < 360; i += (360 / kVertexCount)) {
             float deg_in_rad = i * GLWindow::DEGREES_TO_RADIANS;
             
-            GLfloat x_pixel = window_->GLValForXPixel(cos(deg_in_rad) * radius_ + pos_.x);
-            GLfloat y_pixel = window_->GLValForYPixel(sin(deg_in_rad) * radius_ + pos_.y);
+            GLfloat x_pixel = cos(deg_in_rad) * radius_;
+            GLfloat y_pixel = sin(deg_in_rad) * radius_;
             
             glVertex3f(x_pixel, y_pixel, 0.0f);
         }
     glEnd();
+    
+    glColor3f(0.0, 0.0, 1.0);
+    glRotatef(45, 0, 0, 1);
+    glRectf(-0.5*radius_,
+            -0.1*radius_,
+            0.5*radius_,
+            0.1*radius_);
+    glRectf(-0.1*radius_,
+            -0.5*radius_,
+            0.1*radius_,
+            0.5*radius_);
+    
+    glRotatef(45.0, 0.0, 0.0, 1.0);
+    glPopMatrix();
+    
+    
 }
 
 void SGBall::Tick(int time_elapsed) {

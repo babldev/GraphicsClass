@@ -59,14 +59,6 @@ public:
     void RemoveChild(GLDrawable* child) {
 		children_.erase(child);
 	}
-    
-    float GLValForXPixel(float pixels) {
-        return pixels / (float) width_;
-    }
-    
-    float GLValForYPixel(float pixels) {
-        return pixels / (float) height_;
-    }
         
     static const float DEGREES_TO_RADIANS = 3.14159/180;
     static const float RADIANS_TO_DEGREES = 180/3.14159;

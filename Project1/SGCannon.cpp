@@ -22,12 +22,12 @@ void SGCannon::Draw() {
     
     glColor3f(0.0, 1.0, 1.0);
     glPushMatrix();
-        glTranslatef(window_->GLValForXPixel(pos_.x), window_->GLValForYPixel(pos_.y), 0);
+        glTranslatef(pos_.x, pos_.y, 0);
         glRotatef(angle, 0, 0, 1);
-        glRectf(window_->GLValForXPixel(-0.5*kWidth),
-                window_->GLValForYPixel(-0.5*kHeight),
-                window_->GLValForXPixel(0.5*kWidth),
-                window_->GLValForYPixel(0.5*kHeight));
+        glRectf(-0.5*kWidth,
+                -0.5*kHeight,
+                0.5*kWidth,
+                0.5*kHeight);
     glPopMatrix();
 }
 

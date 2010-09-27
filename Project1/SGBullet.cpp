@@ -24,8 +24,8 @@ void SGBullet::Draw() {
     for (int i = 0; i < 360; i += (360 / kVertexCount)) {
         float deg_in_rad = i * GLWindow::DEGREES_TO_RADIANS;
         
-        GLfloat x_pixel = window_->GLValForXPixel(cos(deg_in_rad) * kRadius + pos_.x);
-        GLfloat y_pixel = window_->GLValForYPixel(sin(deg_in_rad) * kRadius + pos_.y);
+        GLfloat x_pixel = cos(deg_in_rad) * kRadius + pos_.x;
+        GLfloat y_pixel = sin(deg_in_rad) * kRadius + pos_.y;
         
         glVertex3f(x_pixel, y_pixel, 0.0f);
     }
