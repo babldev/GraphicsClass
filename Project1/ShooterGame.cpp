@@ -145,6 +145,7 @@ void ShooterGame::ToggleFullscreen() {
         glutEnterGameMode();
     } else {
         glutLeaveGameMode();
+        OnReshapeEvent(800, 600);
     }
     
     RegisterCallbacks();
