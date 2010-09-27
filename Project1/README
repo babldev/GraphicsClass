@@ -16,24 +16,16 @@ right click the project under "Groups & Files" on the left and choose "Add > Exi
 3) Choose build and run
 
 On Linux:
-I created a Makefile that works on OSX and hopefully also on Linux. Simply run "make". If it's not working, perhaps 
-I'm not including the OpenGL libraries correctly, it should be a quick fix. Please email me at blaw1@umd.edu if you
+1) make
+2) ./p1
+I created a Makefile that works on OSX and hopefully also on Linux. If it's not working, perhaps I'm not 
+including the OpenGL libraries correctly, it should be a quick fix. Please email me at blaw1@umd.edu if you
 are having any issues.
 
 *** Gameplay ***
 See terminal output for gameplay instructions.
 
-*** Bugs known ***
-None right now...
-
 *** Special Features ***
 - Fullscreen mode
 - Animation speed control
-
-TODO: Balloon Physics
-TODO: Hit 'r' to reset
-
-EXTRA: Better Graphics
-EXTRA: Multiple balloons
-EXTRA: Start up screen
-EXTRA: Special effects
+- Game reset

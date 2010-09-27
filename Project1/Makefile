@@ -23,5 +23,7 @@ BubbleGame : main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS)
 .cpp.o :
 	$(CXX) $(CXXFLAGS) $< -o $@
 
+cleano:
+	$(RM) main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS)
 clean:
-	$(RM) $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS) p1
+	$(RM) main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS) p1

@@ -49,13 +49,7 @@ int GetMilliSpan(int nTimeStart) {
 void ShooterGame::Init(int* argc, char** argv, int width, int height) {  
     window_ = new GLWindow();
     window_->Init(argc, argv, width, height, 0, 0);
-    
-    ball_ = new SGBall(Vector2d(300, 400), 50);
-    window_->AddChild(ball_);
-    
-    cannon_ = new SGCannon(Vector2d(0.5 * width, SGCannon::kHeight));
-    window_->AddChild(cannon_);
-    
+
     // Terminal instructions
     cout << "\n\
     -----------------------------------------------------------------------\n\
@@ -64,16 +58,37 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     - Hit 'f' to enter fullscreen mode.\n\
     - Hit '+' and '-' to alter the animation speed\n\
       (make sure to hit shift correctly).\n\
+    - Hit 'r' too reset.\n\
     - Hit 'q' to quit.\n\
     -----------------------------------------------------------------------\n";
     
     RegisterCallbacks();
     glutGameModeString( "1024x768:16@60" );
     
-    last_tick_ = GetMilliCount();
+    Reset();
     
     // Run
     glutMainLoop();
+}
+
+void ShooterGame::Reset() {
+    bullets_.empty();
+    
+    if (ball_ != NULL)  {
+        window_->RemoveChild(ball_);
+        delete ball_;
+    }
+    ball_ = new SGBall(Vector2d(300, 400), 50);
+    window_->AddChild(ball_);
+    
+    if (cannon_ != NULL)  {
+        window_->RemoveChild(cannon_);
+        delete cannon_;
+    }
+    cannon_ = new SGCannon(Vector2d(0.5 * window_->width(), SGCannon::kHeight));
+    window_->AddChild(cannon_);
+    
+    last_tick_ = GetMilliCount();
 }
 
 void ShooterGame::RegisterCallbacks() {
@@ -134,6 +149,9 @@ void ShooterGame::OnKeyboardEvent(unsigned char c, int x, int y) {
             break;
         case 'f':
             ToggleFullscreen();
+            break;
+        case 'r':
+            Reset();
             break;
         case '+':
             window_->animation_speed_ += GLWindow::ANIMATION_SPEED_INC;

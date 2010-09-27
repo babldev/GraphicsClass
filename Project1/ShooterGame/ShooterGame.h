@@ -14,6 +14,7 @@
 #include "ShooterGame/Elements/SGBullet.h"
 
 #include <set>
+
 using namespace std;
 
 class ShooterGame {
@@ -26,6 +27,7 @@ public:
     
     void Init(int* argc, char** argv, int width, int height);
     void RegisterCallbacks();
+    void Reset();
     
     void OnDisplayEvent();
     void OnReshapeEvent(int w, int h);
