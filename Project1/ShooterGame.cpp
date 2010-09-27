@@ -147,9 +147,15 @@ void ShooterGame::OnTick() {
             Circle ball_shape = ball_->Shape();
             
             if (Geometry::CircleIntersectsCircle(&bullet_shape, &ball_shape)) {
+                Vector2d bullet_rel_vel = (*bullet_it)->vel_ - ball_->vel_;
+                Vector2d collision_par = Vector2d::parProject(bullet_rel_vel,
+                                                              (*bullet_it)->pos_ - ball_->pos_);
+                Vector2d collision_perp = bullet_rel_vel - collision_par;
+                
                 cout << "Hit!" << endl;
-                ball_->vel_ += (Vector2d::parProject((*bullet_it)->vel_,
-                                                     ball_->vel_ - (*bullet_it)->vel_)) * 0.5;
+                ball_->vel_ += collision_par * 0.5;
+                ball_->rvel_ += -0.0001 * (bullet_rel_vel.x * collision_perp.y - 
+                                      bullet_rel_vel.y * collision_perp.x);
                 window_->RemoveChild(*bullet_it);
                 delete *bullet_it;
                 bullets_.erase(bullet_it);

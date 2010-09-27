@@ -23,7 +23,8 @@ public:
     
     // Variables
     Vector2d pos_, vel_, acc_;
-    static const double ANIMATION_SPEED;
+    static const float ANIMATION_SPEED = 0.01;
+    static const float ROTATE_CONSTANT = 50.0;
 };
 
 #endif /* INC_GLMOVABLE_H */

@@ -18,36 +18,34 @@
 
 void SGBall::Draw() {
     glPushMatrix();
+        glTranslatef(pos_.x, pos_.y, 0);
+        glRotatef(rot_, 0, 0, 1);
     
-    glTranslatef(pos_.x, pos_.y, 0);
-	glBegin(GL_POLYGON);
-        glColor3f(1.0, 1.0, 1.0);
+        // Create ball
+        glBegin(GL_POLYGON);
+            glColor3f(1.0, 1.0, 1.0);
+            
+            for (int i = 0; i < 360; i += (360 / kVertexCount)) {
+                float deg_in_rad = i * GLWindow::DEGREES_TO_RADIANS;
+                
+                GLfloat x_pixel = cos(deg_in_rad) * radius_;
+                GLfloat y_pixel = sin(deg_in_rad) * radius_;
+                
+                glVertex3f(x_pixel, y_pixel, 0.0f);
+            }
+        glEnd();
         
-        for (int i = 0; i < 360; i += (360 / kVertexCount)) {
-            float deg_in_rad = i * GLWindow::DEGREES_TO_RADIANS;
-            
-            GLfloat x_pixel = cos(deg_in_rad) * radius_;
-            GLfloat y_pixel = sin(deg_in_rad) * radius_;
-            
-            glVertex3f(x_pixel, y_pixel, 0.0f);
-        }
-    glEnd();
+        // Create spin markers
+        const float SPIN_MARK_WIDTH = 0.08;
+        const float SPIN_MARK_HEIGHT = 1.0;
+        glColor3f(0.0, 0.0, 0.0);
+        glRectf(-1*SPIN_MARK_WIDTH*radius_,
+                -1*SPIN_MARK_HEIGHT*radius_,
+                SPIN_MARK_WIDTH*radius_,
+                SPIN_MARK_HEIGHT*radius_);
+
     
-    glColor3f(0.0, 0.0, 1.0);
-    glRotatef(45, 0, 0, 1);
-    glRectf(-0.5*radius_,
-            -0.1*radius_,
-            0.5*radius_,
-            0.1*radius_);
-    glRectf(-0.1*radius_,
-            -0.5*radius_,
-            0.1*radius_,
-            0.5*radius_);
-    
-    glRotatef(45.0, 0.0, 0.0, 1.0);
     glPopMatrix();
-    
-    
 }
 
 void SGBall::Tick(int time_elapsed) {
@@ -69,6 +67,10 @@ void SGBall::Tick(int time_elapsed) {
         pos_.y = radius_;
         vel_.y *= -1 * kWallDampening;
     }
+    
+    // Rotate update (in degrees)
+    rot_ += fmod(rvel_ * time_elapsed * GLMovable::ROTATE_CONSTANT * GLMovable::ANIMATION_SPEED,
+                 360);
 }
 
 Circle SGBall::Shape() {

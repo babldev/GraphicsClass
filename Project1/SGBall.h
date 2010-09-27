@@ -13,7 +13,7 @@
 class SGBall : public GLMovable {
 public:
 	SGBall(Vector2d pos, float radius) : GLMovable(pos),
-            radius_(radius) {
+            radius_(radius), rot_(0.0), rvel_(0.0) {
         acc_ = Vector2d(0, -2);
         vel_ = Vector2d(40, 40);
     }
@@ -25,7 +25,9 @@ public:
     
     static const int kVertexCount = 30;
     static const float kWallDampening = 0.6;
+
+    float rot_, rvel_;
 protected:
-	float radius_;
+	float radius_;    
     bool alive_; // True if the ball is still on screen
 };
