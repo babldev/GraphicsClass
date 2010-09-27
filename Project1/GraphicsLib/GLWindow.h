@@ -42,23 +42,23 @@ public:
     void Draw();
     
     void Tick(int time_elapsed);
-	
-	void Destroy() {
-		for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
-			(*i)->Release();
-		}
+    
+    void Destroy() {
+        for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
+            (*i)->Release();
+        }
         
-		children_.clear();
-	}
-	
-	void AddChild(GLDrawable* new_child) {
-		children_.push_back(new_child);
+        children_.clear();
+    }
+    
+    void AddChild(GLDrawable* new_child) {
+        children_.push_back(new_child);
         new_child->set_window(this);
-	}
+    }
     
     void RemoveChild(GLDrawable* child) {
-		children_.remove(child);
-	}
+        children_.remove(child);
+    }
         
     static const float DEGREES_TO_RADIANS = 3.14159/180;
     static const float RADIANS_TO_DEGREES = 180/3.14159;

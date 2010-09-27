@@ -11,7 +11,7 @@
 
 class SGCannon : public GLMovable {
 public:
-	SGCannon(Vector2d pos) : GLMovable(pos) {
+    SGCannon(Vector2d pos) : GLMovable(pos) {
     }
     ~SGCannon() { }
     

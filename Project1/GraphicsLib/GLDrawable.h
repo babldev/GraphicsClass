@@ -25,30 +25,30 @@ public:
     GLWindow* window() { return window_; }
     void set_window(GLWindow* window) { window_ = window; };
     
-	virtual void Draw() {
-		for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
-			(*i)->Draw();
-		}
-	}
+    virtual void Draw() {
+        for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
+            (*i)->Draw();
+        }
+    }
     
     virtual void Tick(int time_elapsed) {
         for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
-			(*i)->Tick(time_elapsed);
-		}
+            (*i)->Tick(time_elapsed);
+        }
     }
-	
-	void Destroy() {
-		for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
-			(*i)->Release();
-		}
+    
+    void Destroy() {
+        for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
+            (*i)->Release();
+        }
         
-		children_.clear();
-	}
-	
-	void AddChild(GLDrawable* new_child) {
-		children_.push_back(new_child);
+        children_.clear();
+    }
+    
+    void AddChild(GLDrawable* new_child) {
+        children_.push_back(new_child);
         new_child->set_window(window_);
-	}
+    }
     
 protected:
     GLWindow* window_;

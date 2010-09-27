@@ -18,7 +18,7 @@
 #include <iostream>
 
 void SGBullet::Draw() {
-	glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3f(1.0, 1.0, 0.0);
     
     for (int i = 0; i < 360; i += (360 / kVertexCount)) {

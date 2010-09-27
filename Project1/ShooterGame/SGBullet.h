@@ -12,12 +12,12 @@
 
 class SGBullet : public GLMovable {
 public:
-	SGBullet(Vector2d pos, Vector2d vel) : GLMovable(pos), alive_(true) {
+    SGBullet(Vector2d pos, Vector2d vel) : GLMovable(pos), alive_(true) {
         vel_ = Vector2d::normalize(vel) * kShootSpeed;
     }
     ~SGBullet() { }
-	
-	virtual void Draw();
+    
+    virtual void Draw();
     virtual void Tick(int time_elapsed);
     Circle Shape();
     

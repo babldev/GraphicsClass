@@ -51,12 +51,12 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     
     // Terminal instructions
     cout << "\n\
-	-----------------------------------------------------------------------\n\
-	CMSC 427 - Project 1.\n\
-	- Use 'a' and 's' to move your cannon left and right.\n\
+    -----------------------------------------------------------------------\n\
+    CMSC 427 - Project 1.\n\
+    - Use 'a' and 's' to move your cannon left and right.\n\
     - Hit 'f' to enter fullscreen mode.\n\
-	- Hit 'q' to quit.\n\
-	-----------------------------------------------------------------------\n";
+    - Hit 'q' to quit.\n\
+    -----------------------------------------------------------------------\n";
     
     RegisterCallbacks();
     glutGameModeString( "1024x768:16@60" );
@@ -101,7 +101,7 @@ void ShooterGame::OnReshapeEvent(int w, int h) {
 void ShooterGame::OnMouseEvent(int b, int s, int x, int y) {      // mouse click callback
     if (s == GLUT_DOWN) {
         cout << "Mouse click detected at coordinates x="
-		<< x << " and y=" << y << endl;
+        << x << " and y=" << y << endl;
         if (b == GLUT_LEFT_BUTTON) {
             cout << "Left mouse click." << endl;
             

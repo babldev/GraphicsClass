@@ -12,14 +12,14 @@
 
 class SGBall : public GLMovable {
 public:
-	SGBall(Vector2d pos, float radius) : GLMovable(pos),
+    SGBall(Vector2d pos, float radius) : GLMovable(pos),
             radius_(radius), rot_(0.0), rvel_(0.0) {
         acc_ = Vector2d(0, -2);
         vel_ = Vector2d(40, 40);
     }
     ~SGBall() { }
-	
-	virtual void Draw();
+    
+    virtual void Draw();
     virtual void Tick(int time_elapsed);
     Circle Shape();
     
@@ -28,6 +28,6 @@ public:
 
     float rot_, rvel_;
 protected:
-	float radius_;    
+    float radius_;    
     bool alive_; // True if the ball is still on screen
 };
