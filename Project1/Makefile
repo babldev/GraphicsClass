@@ -17,8 +17,6 @@ GraphicsLib/GLMovable.o \
 GraphicsLib/GLWindow.o \
 GraphicsLib/Math/Vector2d.o
 
-GRAPHICS_LIB_DIRS = 
-
 BubbleGame : main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS)
 	$(CXX) $(LFLAGS) main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS) -o p1 
 

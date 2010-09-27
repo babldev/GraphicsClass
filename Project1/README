@@ -15,6 +15,11 @@ On OSX:
 right click the project under "Groups & Files" on the left and choose "Add > Existing Frameworks"
 3) Choose build and run
 
+On Linux:
+I created a Makefile that works on OSX and hopefully also on Linux. Simply run "make". If it's not working, perhaps 
+I'm not including the OpenGL libraries correctly, it should be a quick fix. Please email me at blaw1@umd.edu if you
+are having any issues.
+
 *** Gameplay ***
 See terminal output for gameplay instructions.
 
@@ -28,7 +33,6 @@ None right now...
 TODO: Balloon Physics
 TODO: Adjust gameplay speed
 TODO: Hit 'r' to reset
-TODO: Makefile/Unix compatibility?
 
 EXTRA: Better Graphics
 EXTRA: Multiple balloons
