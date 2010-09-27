@@ -53,12 +53,21 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     cout << "\n\
 	-----------------------------------------------------------------------\n\
 	CMSC 427 - Project 1.\n\
-	- Click left mouse button to swap colors.\n\
-	- Try resizing and covering/uncovering the window.\n\
-	- Hit q to quit.\n\
+	- Use 'a' and 's' to move your cannon left and right.\n\
+    - Hit 'f' to enter fullscreen mode.\n\
+	- Hit 'q' to quit.\n\
 	-----------------------------------------------------------------------\n";
     
-    // Set up callbacks
+    RegisterCallbacks();
+    glutGameModeString( "1024x768:16@60" );
+    
+    last_tick_ = GetMilliCount();
+    
+    // Run
+    glutMainLoop();
+}
+
+void ShooterGame::RegisterCallbacks() {
     glutDisplayFunc(ShooterGame::DisplayEvent);
     glutReshapeFunc(ShooterGame::ReshapeEvent);
     glutMouseFunc(ShooterGame::MouseEvent);
@@ -66,11 +75,6 @@ void ShooterGame::Init(int* argc, char** argv, int width, int height) {
     glutIdleFunc(ShooterGame::Tick);
     glutPassiveMotionFunc(ShooterGame::MouseMove);
     glutMotionFunc(ShooterGame::MouseMove);  
-    
-    last_tick_ = GetMilliCount();
-    
-    // Run
-    glutMainLoop();
 }
 
 void ShooterGame::OnDisplayEvent(void) {
@@ -118,13 +122,32 @@ void ShooterGame::OnKeyboardEvent(unsigned char c, int x, int y) {
         case 'a':
             cannon_->MoveLeft();
             break;
-        case 'f':
+        case 's':
             cannon_->MoveRight();
+            break;
+        case 'f':
+            ToggleFullscreen();
+            break;
+        case '+':
+            break;
+        case '-':
             break;
         default:
             cout << "Hit q to quit.  All other characters ignored" << endl;
             break;
     }
+}
+
+void ShooterGame::ToggleFullscreen() {
+    fullscreen_ = !fullscreen_;
+    
+    if (fullscreen_) {
+        glutEnterGameMode();
+    } else {
+        glutLeaveGameMode();
+    }
+    
+    RegisterCallbacks();
 }
 
 void ShooterGame::OnTick() {

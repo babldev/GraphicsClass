@@ -25,6 +25,7 @@ public:
     }
     
     void Init(int* argc, char** argv, int width, int height);
+    void RegisterCallbacks();
     
     void OnDisplayEvent();
     void OnReshapeEvent(int w, int h);
@@ -32,6 +33,7 @@ public:
     void OnKeyboardEvent(unsigned char c, int x, int y);
     void OnMouseMove(int x, int y);
     void OnTick();
+    void ToggleFullscreen();
     
     static void DisplayEvent() { game.OnDisplayEvent(); }
     static void ReshapeEvent(int w, int h) { game.OnReshapeEvent(w, h); }
@@ -46,7 +48,8 @@ public:
     
 protected:
     GLWindow* window_;
-    
+    bool fullscreen_;
+
     // Helper pointers
     SGBall* ball_;
     SGCannon* cannon_;

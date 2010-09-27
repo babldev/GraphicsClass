@@ -25,13 +25,13 @@ void GLWindow::Init(int* argc, char** argv, int width, int height, int x, int y)
 }
 
 void GLWindow::Draw() {
-    for(set<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
+    for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
         (*i)->Draw();
     }
 }
 
 void GLWindow::Tick(int time_elapsed) {
-    for(set<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
+    for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
         (*i)->Tick(time_elapsed);
     }
 }

@@ -13,7 +13,7 @@
 #include "GLDrawable.h"
 #include "Rectangle.h"
 
-#include <set>
+#include <list>
 using namespace std;
 
 class GLWindow {
@@ -44,7 +44,7 @@ public:
     void Tick(int time_elapsed);
 	
 	void Destroy() {
-		for(set<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
+		for(list<GLDrawable*>::iterator i = children_.begin(); i != children_.end(); i++) {
 			(*i)->Release();
 		}
         
@@ -52,12 +52,12 @@ public:
 	}
 	
 	void AddChild(GLDrawable* new_child) {
-		children_.insert(new_child);
+		children_.push_back(new_child);
         new_child->set_window(this);
 	}
     
     void RemoveChild(GLDrawable* child) {
-		children_.erase(child);
+		children_.remove(child);
 	}
         
     static const float DEGREES_TO_RADIANS = 3.14159/180;
@@ -66,7 +66,7 @@ protected:
     int width_;
     int height_;
     
-    set<GLDrawable*> children_; 
+    list<GLDrawable*> children_; 
 };
 
 #endif /* INC_GLWINDOW_H */
