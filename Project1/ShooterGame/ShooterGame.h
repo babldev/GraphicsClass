@@ -53,9 +53,8 @@ protected:
     bool fullscreen_;
 
     // Helper pointers
-    SGBall* ball_;
-    SGCannon* cannon_;
-    set<SGBullet*> bullets_;
+    BGBall* ball_;
+    BGPlatform* floor_;
     
     int last_tick_;
 };
