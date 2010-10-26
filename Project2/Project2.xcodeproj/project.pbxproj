@@ -15,6 +15,7 @@
 		41F1F8CF127658C3005DDEFA /* Vector3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8C6127658C3005DDEFA /* Vector3d.cpp */; };
 		41F1F8D0127658C3005DDEFA /* RGBpixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8CA127658C3005DDEFA /* RGBpixmap.cpp */; };
 		41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8D2127658D0005DDEFA /* BubbleGame.cpp */; };
+		41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8F212765A4A005DDEFA /* BGBall.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Project2.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Project2.1 */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,8 @@
 		41F1F8CB127658C3005DDEFA /* RGBpixmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBpixmap.h; sourceTree = "<group>"; };
 		41F1F8D2127658D0005DDEFA /* BubbleGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BubbleGame.cpp; sourceTree = "<group>"; };
 		41F1F8D3127658D0005DDEFA /* BubbleGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleGame.h; sourceTree = "<group>"; };
+		41F1F8F112765A4A005DDEFA /* BGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGBall.h; sourceTree = "<group>"; };
+		41F1F8F212765A4A005DDEFA /* BGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGBall.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* Project2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project2; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* Project2.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Project2.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +176,8 @@
 		41F1F8D4127658D0005DDEFA /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				41F1F8F112765A4A005DDEFA /* BGBall.h */,
+				41F1F8F212765A4A005DDEFA /* BGBall.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				41F1F8CF127658C3005DDEFA /* Vector3d.cpp in Sources */,
 				41F1F8D0127658C3005DDEFA /* RGBpixmap.cpp in Sources */,
 				41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */,
+				41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
