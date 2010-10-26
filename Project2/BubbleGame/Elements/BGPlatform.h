@@ -1,5 +1,5 @@
 /*
- *  BGBall.h
+ *  BGPlatform.h
  *  Project2
  *
  *  Created by Brady Law on 10/25/10.
@@ -9,18 +9,18 @@
 
 #include "GraphicsLib/GLMovable.h"
 
-class BGBall : public GLMovable {
+class BGPlatform : public GLMovable {
 public:
-    BGBall(Vector3d pos) : GLMovable(pos) {
-        acc_ = Vector3d(0.0f, 0.0f, 5.0f);
+    BGPlatform(Vector3d pos) : GLMovable(pos) {
     }
-    ~BGBall() { }
+    ~BGPlatform() { }
     
     virtual void Draw();
     virtual void Tick(int time_elapsed);
     
-    static const int GLUT_SLICES = 60;
-    static const float RADIUS = 50.0f;
+    static const float X_SIZE = 2500.0f;
+    static const float Y_SIZE = 2500.0f;
+    static const float Z_SIZE = 1.0f;
 protected:
     bool alive_; // True if the ball is still on screen
 };

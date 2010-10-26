@@ -10,7 +10,7 @@
 #include "GraphicsLib/GLWindow.h"
 
 #include "BubbleGame/Elements/BGBall.h"
-// #include "BubbleGame/Elements/BGPlatform.h"
+#include "BubbleGame/Elements/BGPlatform.h"
 
 class BubbleGame {
 public:
@@ -59,7 +59,7 @@ protected:
     
     // Helper pointers
     BGBall* ball_;
-    // SGPlatform* ground_;
+    BGPlatform* ground_;
     
     int last_tick_;
 };

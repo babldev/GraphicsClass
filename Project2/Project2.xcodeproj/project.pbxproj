@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D047AF12767A7500EF94D0 /* BGPlatform.cpp */; };
 		41F1F83B127498D9005DDEFA /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F83A127498D9005DDEFA /* GLUT.framework */; };
 		41F1F83F127498E1005DDEFA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F83E127498E1005DDEFA /* OpenGL.framework */; };
 		41F1F8CC127658C3005DDEFA /* GLDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8BF127658C3005DDEFA /* GLDrawable.cpp */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		41D047AE12767A7500EF94D0 /* BGPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGPlatform.h; sourceTree = "<group>"; };
+		41D047AF12767A7500EF94D0 /* BGPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGPlatform.cpp; sourceTree = "<group>"; };
 		41F1F83A127498D9005DDEFA /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		41F1F83E127498E1005DDEFA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		41F1F85A127650B9005DDEFA /* skybox-clouds.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "skybox-clouds.bmp"; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 			children = (
 				41F1F8F112765A4A005DDEFA /* BGBall.h */,
 				41F1F8F212765A4A005DDEFA /* BGBall.cpp */,
+				41D047AE12767A7500EF94D0 /* BGPlatform.h */,
+				41D047AF12767A7500EF94D0 /* BGPlatform.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				41F1F8D0127658C3005DDEFA /* RGBpixmap.cpp in Sources */,
 				41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */,
 				41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */,
+				41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,11 +64,18 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
     RegisterCallbacks();
     glutGameModeString( "1024x768:16@60" );
     
+    glClearColor(0.8, 0.8, 1.0, 1.0);
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+    glDepthFunc(GL_LEQUAL);
+    glShadeModel(GL_SMOOTH);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    
     Reset();
     
     camera_up_ = Vector3d(0.0f, 0.0f, 1.0f);
-    camera_eye_ = Vector3d(1000.0f, 1000.0f, 1000.0f);
-    camera_center_ = ball_->pos_;
     
     // Run
     glutMainLoop();
@@ -76,8 +83,12 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
 
 void BubbleGame::Reset() {
     // TODO: Reset ball, floor
-    ball_ = new BGBall(Vector3d(250.0f, -1750.0f, 500.0f));
+    ball_ = new BGBall(Vector3d(0.0f, 0.0f, 400.0f));
+    ground_ = new BGPlatform(Vector3d(0.0f, 0.0f, -100.0f));
+    
     window_->AddChild(ball_);
+    window_->AddChild(ground_);
+    
     last_tick_ = GetMilliCount();
 }
 
@@ -92,17 +103,19 @@ void BubbleGame::RegisterCallbacks() {
 }
 
 void BubbleGame::OnDisplayEvent(void) {
-    glClearColor(0.8, 0.8, 1.0, 1.0);           // background is gray
-    glEnable(GL_NORMALIZE);
-    glEnable(GL_CULL_FACE);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDepthFunc(GL_LEQUAL);
-    glShadeModel(GL_SMOOTH);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    
     glClear(GL_COLOR_BUFFER_BIT);               // clear the window
     
+    // Update the camera
+    camera_eye_ = Vector3d(ball_->pos_.x,
+                           ball_->pos_.y + 5000.0f,
+                           ball_->pos_.z + 5000.0f);
+    camera_center_ = ball_->pos_;
+    
+    glLoadIdentity();
+    gluLookAt(camera_eye_.x, camera_eye_.y, camera_eye_.z,
+              camera_center_.x, camera_center_.y, camera_center_.z,
+              camera_up_.x, camera_up_.y, camera_up_.z);
+    // gluLookAt(0.0f, 1.0f, 1000.0f, 0, 0, 0, 0, 0, 1.0f);
     window_->Draw();
     
     // Add lighting
@@ -152,9 +165,6 @@ void BubbleGame::OnReshapeEvent(int w, int h) {
     
     cout << "MyReshape called width=" << w << " height=" << h << endl;
     glViewport (0, 0, w, h);                    // update the viewport
-    gluLookAt(camera_eye_.x, camera_eye_.y, camera_eye_.z,
-              camera_center_.x, camera_center_.y, camera_center_.z,
-              camera_up_.x, camera_up_.y, camera_up_.z);
     glMatrixMode(GL_PROJECTION);                // update projection
     glLoadIdentity();
     gluPerspective(BubbleGame::CAMERA_FOV_DEGREES,
@@ -163,6 +173,7 @@ void BubbleGame::OnReshapeEvent(int w, int h) {
                    BubbleGame::CAMERA_FAR_CLIP);  // map unit square to viewport
     glMatrixMode(GL_MODELVIEW);
     glutPostRedisplay();                        // request redisplay
+    
 }
 
 void BubbleGame::OnMouseEvent(int b, int s, int x, int y) {      // mouse click callback
