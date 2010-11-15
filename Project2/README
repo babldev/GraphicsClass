@@ -1,0 +1,56 @@
+Brady Law
+CMSC 427 - Fall 2010
+Project 2
+UID: 109364898
+
+******************
+*** BubbleGame ***
+******************
+Written in XCode on Mac OSX 10.6 Leopard
+
+*** Compiling ***
+On OSX:
+1) Open .xcodeproj file in XCode.
+2) Make sure the OpenGL and GLUT frameworks are included under the project (and not in red). If this is not the case,
+right click the project under "Groups & Files" on the left and choose "Add > Existing Frameworks"
+3) Choose build and run
+
+On Linux:
+1) make
+2) ./p2 (MAKE SURE skybox-clouds.bmp is in the local directory!!!)
+I created a Makefile that works on OSX and hopefully also on Linux. If it's not working, perhaps I'm not 
+including the OpenGL libraries correctly, it should be a quick fix. Please email me at blaw1@umd.edu if you
+are having any issues.
+
+*** Gameplay ***
+Ball Control:
+Use these keys to push the ball. Holding them down will have an extended effect.
+
+  w
+a s d
+(w) Push forward
+(a) Push left
+(s) Push back
+(d) Push right
+(e) Jump up
+
+Zooming:
+(i) Zoom in
+(o) Zoom out
+
+Camera Control:
+Hold down the left click button, and move:
+(Left/Right) to control angle.
+(Up/Down) to control celevation.
+
+Other:
+(q) Quit
+(r) Reset
+
+*** Special Features ***
+- Ambient, Spotlight, Infinite Spotlight, and a spotlight always over the ball
+- "Shadow" above ball that shows the ball X,Y location. I would have put this right on the 
+support platform but depth issues caused some problems there.
+- Reset button. If you lose the ball, click r to reset.
+
+Enjoy!
