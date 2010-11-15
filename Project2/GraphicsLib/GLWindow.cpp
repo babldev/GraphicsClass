@@ -25,7 +25,7 @@ void GLWindow::Init(int* argc, char** argv, int width, int height, int x, int y)
     SetDimensions(width, height);
     
     glutInit(argc, argv);                      // OpenGL initializations
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);// double buffering and RGB
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);// double buffering and RGB
     glutInitWindowSize(800, 600);               // create a 400x400 window
     glutInitWindowPosition(0, 0);               // ...in the upper left
     glutCreateWindow(argv[0]);                  // create the window

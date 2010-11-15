@@ -8,6 +8,8 @@
  */
 
 #include "BubbleGame.h"
+#include "GraphicsLib/GLerror.h"
+#include "GraphicsLib/Math/Vector3d.h"
 
 #ifdef __APPLE__ 
 #include <OPENGL/gl.h> 
@@ -82,12 +84,30 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
 }
 
 void BubbleGame::Reset() {
-    // TODO: Reset ball, floor
-    ball_ = new BGBall(Vector3d(0.0f, 0.0f, 400.0f));
-    ground_ = new BGPlatform(Vector3d(0.0f, 0.0f, -100.0f));
+    if (ball_ != NULL) {
+        window_->RemoveChild(ball_);
+        delete ball_;
+        ball_ = NULL;
+    }
+    if (ground_ != NULL) {
+        window_->RemoveChild(ground_);
+        delete ground_;
+        ground_ = NULL;
+    }
+    if (skybox_ != NULL) {
+        window_->RemoveChild(skybox_);
+        delete skybox_;
+        skybox_ = NULL;
+    }
+    
+    ball_ = new BGBall(Vector3d(0,0,1000.0f));
+    ground_ = new BGPlatform(Vector3d(0, 0, 0));
+    skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f));
+    ball_->set_supporting_platform(ground_);
     
     window_->AddChild(ball_);
     window_->AddChild(ground_);
+    window_->AddChild(skybox_);
     
     last_tick_ = GetMilliCount();
 }
@@ -98,18 +118,23 @@ void BubbleGame::RegisterCallbacks() {
     glutMouseFunc(BubbleGame::MouseEvent);
     glutKeyboardFunc(BubbleGame::KeyboardEvent);
     glutIdleFunc(BubbleGame::Tick);
-    glutPassiveMotionFunc(BubbleGame::MouseMove);
+    glutPassiveMotionFunc(BubbleGame::PassiveMouseMove);
     glutMotionFunc(BubbleGame::MouseMove);  
 }
 
 void BubbleGame::OnDisplayEvent(void) {
-    glClear(GL_COLOR_BUFFER_BIT);               // clear the window
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // clear the window
     
     // Update the camera
-    camera_eye_ = Vector3d(ball_->pos_.x,
-                           ball_->pos_.y + 5000.0f,
-                           ball_->pos_.z + 5000.0f);
-    camera_center_ = ball_->pos_;
+    camera_center_ = Vector3d(ball_->pos_.x,
+                              ball_->pos_.y,
+                              100.0f);
+    camera_eye_ = Vector3d(camera_center_.x +
+                           camera_distance_*sin(camera_elevation_angle_)*cos(camera_azimuth_angle_),
+                           camera_center_.y +
+                           camera_distance_*sin(camera_elevation_angle_)*sin(camera_azimuth_angle_),
+                           camera_center_.z + camera_distance_*cos(camera_elevation_angle_));
+    
     
     glLoadIdentity();
     gluLookAt(camera_eye_.x, camera_eye_.y, camera_eye_.z,
@@ -156,6 +181,8 @@ void BubbleGame::OnDisplayEvent(void) {
     glLightf(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.0005f);
     glEnable(GL_LIGHT2);
     
+    checkGLerror("lighting setup");
+    
     glutSwapBuffers();                          // swap buffers
 }
 
@@ -187,11 +214,69 @@ void BubbleGame::OnKeyboardEvent(unsigned char c, int x, int y) {
         case 'f':
             ToggleFullscreen();
             break;
+        case 'i':
+            camera_distance_ *= 1 - CAMERA_ZOOM_RATE;
+            break;
+        case 'o':
+            camera_distance_ *= 1 + CAMERA_ZOOM_RATE;
+            break;
+            
+        case 'w':
+            PokeBall(BubbleGame::POKE_FORWARDS);
+            break;
+        case 's':
+            PokeBall(BubbleGame::POKE_BACKWARDS);
+            break;
+        case 'a':
+            PokeBall(BubbleGame::POKE_LEFT);
+            break;
+        case 'd':
+            PokeBall(BubbleGame::POKE_RIGHT);
+            break;
+        case 'e':
+            PokeBall(BubbleGame::POKE_UP);
+            break;
+            
         case 'r':
             Reset();
             break;
         default:
             cout << "Hit q to quit.  All other characters ignored" << endl;
+            break;
+    }
+}
+
+void BubbleGame::PokeBall(int direction) {
+    Vector3d camera_direction = camera_center_ - camera_eye_;
+    Vector3d poke; 
+    
+    switch (direction) {
+        case BubbleGame::POKE_FORWARDS:
+            cout << "Poking forwards..." << endl;
+            poke = Vector3d(camera_direction.x, camera_direction.y, 0);
+            ball_->Poke(poke);
+            break;
+        case BubbleGame::POKE_BACKWARDS:
+            cout << "Poking backwards..." << endl;
+            poke = Vector3d(-1*camera_direction.x, -1*camera_direction.y, 0);
+            ball_->Poke(poke);
+            break;
+        case BubbleGame::POKE_RIGHT:
+            cout << "Poking right..." << endl;
+            poke = Vector3d(camera_direction.y, -1*camera_direction.x, 0);
+            ball_->Poke(poke);
+            break;
+        case BubbleGame::POKE_LEFT:
+            cout << "Poking left..." << endl;
+            poke = Vector3d(-1*camera_direction.y, camera_direction.x, 0);
+            ball_->Poke(poke);
+            break;
+        case BubbleGame::POKE_UP:
+            cout << "Poking up..." << endl;
+            poke = Vector3d(0, 0, 1.0f);
+            ball_->Poke(poke);
+            break;
+        default:
             break;
     }
 }
@@ -218,6 +303,13 @@ void BubbleGame::OnTick() {
     glutPostRedisplay();
 }
 
+void BubbleGame::OnPassiveMouseMove(int x, int y) {
+    mouse_pos_x_ = x;
+    mouse_pos_y_ = y;
+}
+
 void BubbleGame::OnMouseMove(int x, int y) {
-    // Invert the y value. Glut has upper left as origin, BubbleGame has it as the bottom left.
+    cout << camera_azimuth_angle_ << endl;
+    camera_azimuth_angle_ -= (float) 0.0005f * (x - mouse_pos_x_);
+    camera_elevation_angle_ -= (float) 0.0005f * (y - mouse_pos_y_);
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D047AF12767A7500EF94D0 /* BGPlatform.cpp */; };
+		41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04AED12776C3200EF94D0 /* BGSkybox.cpp */; };
+		41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04BFE1277854C00EF94D0 /* GLerror.cpp */; };
 		41F1F83B127498D9005DDEFA /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F83A127498D9005DDEFA /* GLUT.framework */; };
 		41F1F83F127498E1005DDEFA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F83E127498E1005DDEFA /* OpenGL.framework */; };
 		41F1F8CC127658C3005DDEFA /* GLDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8BF127658C3005DDEFA /* GLDrawable.cpp */; };
@@ -38,6 +40,11 @@
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		41D047AE12767A7500EF94D0 /* BGPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGPlatform.h; sourceTree = "<group>"; };
 		41D047AF12767A7500EF94D0 /* BGPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGPlatform.cpp; sourceTree = "<group>"; };
+		41D04AE212776B7900EF94D0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		41D04AEC12776C3200EF94D0 /* BGSkybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSkybox.h; sourceTree = "<group>"; };
+		41D04AED12776C3200EF94D0 /* BGSkybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGSkybox.cpp; sourceTree = "<group>"; };
+		41D04BFD1277854C00EF94D0 /* GLerror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLerror.h; sourceTree = "<group>"; };
+		41D04BFE1277854C00EF94D0 /* GLerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLerror.cpp; sourceTree = "<group>"; };
 		41F1F83A127498D9005DDEFA /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		41F1F83E127498E1005DDEFA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		41F1F85A127650B9005DDEFA /* skybox-clouds.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "skybox-clouds.bmp"; sourceTree = "<group>"; };
@@ -95,6 +102,7 @@
 				41F1F85C127650BF005DDEFA /* data */,
 				41F1F859127650B9005DDEFA /* Images */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
+				41D04AE212776B7900EF94D0 /* README */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -136,6 +144,8 @@
 				41F1F8C4127658C3005DDEFA /* GLWindow.h */,
 				41F1F8C5127658C3005DDEFA /* Math */,
 				41F1F8C8127658C3005DDEFA /* RGBpixmap */,
+				41D04BFD1277854C00EF94D0 /* GLerror.h */,
+				41D04BFE1277854C00EF94D0 /* GLerror.cpp */,
 			);
 			path = GraphicsLib;
 			sourceTree = "<group>";
@@ -183,6 +193,8 @@
 				41F1F8F212765A4A005DDEFA /* BGBall.cpp */,
 				41D047AE12767A7500EF94D0 /* BGPlatform.h */,
 				41D047AF12767A7500EF94D0 /* BGPlatform.cpp */,
+				41D04AEC12776C3200EF94D0 /* BGSkybox.h */,
+				41D04AED12776C3200EF94D0 /* BGSkybox.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -247,6 +259,8 @@
 				41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */,
 				41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */,
 				41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */,
+				41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */,
+				41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
