@@ -17,6 +17,7 @@ class BubbleGame {
 public:
     BubbleGame() {
         camera_distance_ = 10000.0f;
+        camera_auto_distance_ = camera_distance_;
         camera_elevation_angle_ = 315.0f;
         camera_azimuth_angle_ = 35.0f;
     }
@@ -26,8 +27,6 @@ public:
     }
     
     void Init(int* argc, char** argv, int width, int height);
-    void RegisterCallbacks();
-    void Reset();
     
     void OnDisplayEvent();
     void OnReshapeEvent(int w, int h);
@@ -62,11 +61,18 @@ public:
     
     static BubbleGame game;
     
+private:
+    void RegisterCallbacks();
+    void Reset();
+    void AutoZoomCamera();
+    void AddLighting();
+    
 protected:
     GLWindow* window_;
     bool fullscreen_;
     
     float camera_distance_;
+    float camera_auto_distance_;
     float camera_elevation_angle_;
     float camera_azimuth_angle_;
     

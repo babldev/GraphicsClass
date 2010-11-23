@@ -129,12 +129,17 @@ void BubbleGame::OnDisplayEvent(void) {
     camera_center_ = Vector3d(ball_->pos_.x,
                               ball_->pos_.y,
                               100.0f);
-    camera_eye_ = Vector3d(camera_center_.x +
-                           camera_distance_*sin(camera_elevation_angle_)*cos(camera_azimuth_angle_),
-                           camera_center_.y +
-                           camera_distance_*sin(camera_elevation_angle_)*sin(camera_azimuth_angle_),
-                           camera_center_.z + camera_distance_*cos(camera_elevation_angle_));
     
+    AutoZoomCamera();
+    AddLighting();
+    
+    camera_eye_ = Vector3d(camera_center_.x +
+                                camera_auto_distance_ *
+                                sin(camera_elevation_angle_)*cos(camera_azimuth_angle_),
+                           camera_center_.y +
+                                camera_auto_distance_ *
+                                sin(camera_elevation_angle_)*sin(camera_azimuth_angle_),
+                           camera_center_.z + camera_auto_distance_*cos(camera_elevation_angle_));
     
     glLoadIdentity();
     gluLookAt(camera_eye_.x, camera_eye_.y, camera_eye_.z,
@@ -143,6 +148,14 @@ void BubbleGame::OnDisplayEvent(void) {
     // gluLookAt(0.0f, 1.0f, 1000.0f, 0, 0, 0, 0, 0, 1.0f);
     window_->Draw();
     
+    glutSwapBuffers();                          // swap buffers
+}
+
+void BubbleGame::AutoZoomCamera() {
+    camera_auto_distance_ = camera_distance_;
+}
+
+void BubbleGame::AddLighting() {
     // Add lighting
     // (1) Ambient lighting
     GLfloat ambientIntensity[4] = {0.5f, 0.5f, 0.5f, 1.0f};
@@ -182,8 +195,6 @@ void BubbleGame::OnDisplayEvent(void) {
     glEnable(GL_LIGHT2);
     
     checkGLerror("lighting setup");
-    
-    glutSwapBuffers();                          // swap buffers
 }
 
 void BubbleGame::OnReshapeEvent(int w, int h) {
