@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4195DDF9129C4ED5004EB532 /* Vector3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4195DDF8129C4ED5004EB532 /* Vector3d.cpp */; };
+		4195DDFD129C4EE4004EB532 /* RGBpixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4195DDFB129C4EE4004EB532 /* RGBpixmap.cpp */; };
 		41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D047AF12767A7500EF94D0 /* BGPlatform.cpp */; };
 		41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04AED12776C3200EF94D0 /* BGSkybox.cpp */; };
 		41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04BFE1277854C00EF94D0 /* GLerror.cpp */; };
@@ -15,8 +17,6 @@
 		41F1F8CC127658C3005DDEFA /* GLDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8BF127658C3005DDEFA /* GLDrawable.cpp */; };
 		41F1F8CD127658C3005DDEFA /* GLMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8C1127658C3005DDEFA /* GLMovable.cpp */; };
 		41F1F8CE127658C3005DDEFA /* GLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8C3127658C3005DDEFA /* GLWindow.cpp */; };
-		41F1F8CF127658C3005DDEFA /* Vector3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8C6127658C3005DDEFA /* Vector3d.cpp */; };
-		41F1F8D0127658C3005DDEFA /* RGBpixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8CA127658C3005DDEFA /* RGBpixmap.cpp */; };
 		41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8D2127658D0005DDEFA /* BubbleGame.cpp */; };
 		41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8F212765A4A005DDEFA /* BGBall.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -38,6 +38,11 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4195DDF7129C4ED5004EB532 /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
+		4195DDF8129C4ED5004EB532 /* Vector3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3d.cpp; sourceTree = "<group>"; };
+		4195DDFA129C4EE4004EB532 /* RGBpixmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBpixmap.h; sourceTree = "<group>"; };
+		4195DDFB129C4EE4004EB532 /* RGBpixmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RGBpixmap.cpp; sourceTree = "<group>"; };
+		4195DDFC129C4EE4004EB532 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		41D047AE12767A7500EF94D0 /* BGPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGPlatform.h; sourceTree = "<group>"; };
 		41D047AF12767A7500EF94D0 /* BGPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGPlatform.cpp; sourceTree = "<group>"; };
 		41D04AE212776B7900EF94D0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -56,11 +61,6 @@
 		41F1F8C2127658C3005DDEFA /* GLMovable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMovable.h; sourceTree = "<group>"; };
 		41F1F8C3127658C3005DDEFA /* GLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLWindow.cpp; sourceTree = "<group>"; };
 		41F1F8C4127658C3005DDEFA /* GLWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLWindow.h; sourceTree = "<group>"; };
-		41F1F8C6127658C3005DDEFA /* Vector3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3d.cpp; sourceTree = "<group>"; };
-		41F1F8C7127658C3005DDEFA /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
-		41F1F8C9127658C3005DDEFA /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
-		41F1F8CA127658C3005DDEFA /* RGBpixmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RGBpixmap.cpp; sourceTree = "<group>"; };
-		41F1F8CB127658C3005DDEFA /* RGBpixmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBpixmap.h; sourceTree = "<group>"; };
 		41F1F8D2127658D0005DDEFA /* BubbleGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BubbleGame.cpp; sourceTree = "<group>"; };
 		41F1F8D3127658D0005DDEFA /* BubbleGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleGame.h; sourceTree = "<group>"; };
 		41F1F8F112765A4A005DDEFA /* BGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGBall.h; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 		41F1F8C5127658C3005DDEFA /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				41F1F8C6127658C3005DDEFA /* Vector3d.cpp */,
-				41F1F8C7127658C3005DDEFA /* Vector3d.h */,
+				4195DDF7129C4ED5004EB532 /* Vector3d.h */,
+				4195DDF8129C4ED5004EB532 /* Vector3d.cpp */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -169,9 +169,9 @@
 		41F1F8C8127658C3005DDEFA /* RGBpixmap */ = {
 			isa = PBXGroup;
 			children = (
-				41F1F8C9127658C3005DDEFA /* ReadMe.txt */,
-				41F1F8CA127658C3005DDEFA /* RGBpixmap.cpp */,
-				41F1F8CB127658C3005DDEFA /* RGBpixmap.h */,
+				4195DDFA129C4EE4004EB532 /* RGBpixmap.h */,
+				4195DDFB129C4EE4004EB532 /* RGBpixmap.cpp */,
+				4195DDFC129C4EE4004EB532 /* ReadMe.txt */,
 			);
 			path = RGBpixmap;
 			sourceTree = "<group>";
@@ -254,13 +254,13 @@
 				41F1F8CC127658C3005DDEFA /* GLDrawable.cpp in Sources */,
 				41F1F8CD127658C3005DDEFA /* GLMovable.cpp in Sources */,
 				41F1F8CE127658C3005DDEFA /* GLWindow.cpp in Sources */,
-				41F1F8CF127658C3005DDEFA /* Vector3d.cpp in Sources */,
-				41F1F8D0127658C3005DDEFA /* RGBpixmap.cpp in Sources */,
 				41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */,
 				41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */,
 				41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */,
 				41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */,
 				41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */,
+				4195DDF9129C4ED5004EB532 /* Vector3d.cpp in Sources */,
+				4195DDFD129C4EE4004EB532 /* RGBpixmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
