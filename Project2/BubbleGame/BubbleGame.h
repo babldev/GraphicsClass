@@ -16,10 +16,6 @@
 class BubbleGame {
 public:
     BubbleGame() {
-        camera_distance_ = 10000.0f;
-        camera_auto_distance_ = camera_distance_;
-        camera_elevation_angle_ = 315.0f;
-        camera_azimuth_angle_ = 35.0f;
     }
     
     ~BubbleGame() {

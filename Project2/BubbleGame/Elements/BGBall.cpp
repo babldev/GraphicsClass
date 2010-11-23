@@ -25,8 +25,8 @@
 #include <iostream>
 
 void BGBall::Draw() {
-    GLfloat diffuse_color[] = {1.0f, 0.0f, 1.0f, 1.0f};
-    GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat diffuse_color[] = {1.0f, 0.0f, 1.0f, 0.5f};
+    GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 0.5f};
     
     // (1) Draw Sphere
     // set object colors
@@ -42,9 +42,9 @@ void BGBall::Draw() {
         glutSolidSphere(BGBall::RADIUS, BGBall::GLUT_SLICES, BGBall::GLUT_SLICES);
     glPopMatrix();
     
-    
+    /*
     // (2) Add Shadow
-    glDisable(GL_LIGHTING);
+   
     glPushMatrix();
     glTranslatef(pos_.x, pos_.y, support_platform_->pos_.z+BGPlatform::Z_SIZE-BGBall::RADIUS+400.0f);
     glBegin(GL_POLYGON);
@@ -61,6 +61,7 @@ void BGBall::Draw() {
     glEnd();
     glPopMatrix();
     glEnable(GL_LIGHTING);
+     */
 }
 
 void BGBall::Tick(int time_elapsed) {

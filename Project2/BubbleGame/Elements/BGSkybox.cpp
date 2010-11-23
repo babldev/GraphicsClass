@@ -57,14 +57,14 @@ void BGSkybox::Init() {
 }
 
 void BGSkybox::Draw() {
+    glDisable(GL_LIGHTING);
     GLfloat white[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    
     glEnable(GL_TEXTURE_2D);                    // enable texture mapping
     
     glMaterialfv(GL_FRONT_AND_BACK,             // white background
                  GL_AMBIENT_AND_DIFFUSE,
                  white);
-    
+
     glPushMatrix();
     glScalef(BGSkybox::X_SIZE, BGSkybox::Y_SIZE, BGSkybox::Z_SIZE);
     
@@ -143,6 +143,7 @@ void BGSkybox::Draw() {
     glEnd();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);                   // disable texture mapping
+    glEnable(GL_LIGHTING);
 }
 
 void BGSkybox::Tick(int time_elapsed) {

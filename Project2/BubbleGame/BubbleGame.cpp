@@ -23,6 +23,7 @@
 
 #include <iostream>
 #include <sys/timeb.h>
+#include <math.h>
 
 BubbleGame BubbleGame::game = BubbleGame();
 
@@ -66,12 +67,16 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
     RegisterCallbacks();
     glutGameModeString( "1024x768:16@60" );
     
-    glClearColor(0.8, 0.8, 1.0, 1.0);
+    glClearColor(0, 0, 0, 1.0f);
+    
     glEnable(GL_NORMALIZE);
     glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
+    glEnable(GL_BLEND);
+    
     glDepthFunc(GL_LEQUAL);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glShadeModel(GL_SMOOTH);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     
@@ -84,6 +89,11 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
 }
 
 void BubbleGame::Reset() {
+    camera_distance_ = 10000.0f;
+    camera_auto_distance_ = camera_distance_;
+    camera_elevation_angle_ = 315.0f;
+    camera_azimuth_angle_ = 35.0f;
+    
     if (ball_ != NULL) {
         window_->RemoveChild(ball_);
         delete ball_;
@@ -105,9 +115,9 @@ void BubbleGame::Reset() {
     skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f));
     ball_->set_supporting_platform(ground_);
     
-    window_->AddChild(ball_);
     window_->AddChild(ground_);
     window_->AddChild(skybox_);
+    window_->AddChild(ball_); // Added last for transparency
     
     last_tick_ = GetMilliCount();
 }
@@ -152,7 +162,31 @@ void BubbleGame::OnDisplayEvent(void) {
 }
 
 void BubbleGame::AutoZoomCamera() {
-    camera_auto_distance_ = camera_distance_;
+    Vector3d camera_aim = camera_center_ - camera_eye_;
+    Vector3d camera_ball_aim = ball_->pos_ - camera_eye_; 
+    float angle = Vector3d::angle(camera_aim, camera_ball_aim) * GLWindow::RADIANS_TO_DEGREES;
+    
+    float zoom_out_angle = (CAMERA_FOV_DEGREES / 2) * .8;
+    float zoom_in_angle = (CAMERA_FOV_DEGREES / 2) * .7;
+    float abs_angle = abs(angle);
+    float zoom_rate = 50.0f;
+    
+    // TODO: Add a smoother "spring" like implementation
+    if (abs_angle > zoom_out_angle || camera_auto_distance_ < camera_distance_) {
+        // Zoom out
+        if (camera_auto_distance_ < camera_distance_) {
+            camera_auto_distance_ = min(camera_auto_distance_ + zoom_rate, camera_distance_);
+        } else {
+            camera_auto_distance_ += zoom_rate;
+        }
+    } else if (abs_angle < zoom_in_angle && camera_auto_distance_ > camera_distance_) {
+        // Zoom in if we are not at the desired distance
+        if (camera_auto_distance_ > camera_distance_) {
+            camera_auto_distance_ = max(camera_auto_distance_ - zoom_rate, camera_distance_);
+        } else {
+            camera_auto_distance_ -= zoom_rate;
+        }
+    }
 }
 
 void BubbleGame::AddLighting() {
@@ -160,7 +194,7 @@ void BubbleGame::AddLighting() {
     // (1) Ambient lighting
     GLfloat ambientIntensity[4] = {0.5f, 0.5f, 0.5f, 1.0f};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientIntensity);
-    
+
     // (2) Infinite lighting
     GLfloat lt0Intensity[4] = {0.75f, 0.75f, 0.75f, 1.0f}; // white
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lt0Intensity);
@@ -193,7 +227,7 @@ void BubbleGame::AddLighting() {
     glLightf(GL_LIGHT2, GL_LINEAR_ATTENUATION,	0.0f);
     glLightf(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.0005f);
     glEnable(GL_LIGHT2);
-    
+
     checkGLerror("lighting setup");
 }
 
@@ -263,27 +297,22 @@ void BubbleGame::PokeBall(int direction) {
     
     switch (direction) {
         case BubbleGame::POKE_FORWARDS:
-            cout << "Poking forwards..." << endl;
             poke = Vector3d(camera_direction.x, camera_direction.y, 0);
             ball_->Poke(poke);
             break;
         case BubbleGame::POKE_BACKWARDS:
-            cout << "Poking backwards..." << endl;
             poke = Vector3d(-1*camera_direction.x, -1*camera_direction.y, 0);
             ball_->Poke(poke);
             break;
         case BubbleGame::POKE_RIGHT:
-            cout << "Poking right..." << endl;
             poke = Vector3d(camera_direction.y, -1*camera_direction.x, 0);
             ball_->Poke(poke);
             break;
         case BubbleGame::POKE_LEFT:
-            cout << "Poking left..." << endl;
             poke = Vector3d(-1*camera_direction.y, camera_direction.x, 0);
             ball_->Poke(poke);
             break;
         case BubbleGame::POKE_UP:
-            cout << "Poking up..." << endl;
             poke = Vector3d(0, 0, 1.0f);
             ball_->Poke(poke);
             break;
