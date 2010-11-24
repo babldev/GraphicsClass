@@ -56,12 +56,7 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
     cout << "\n\
     -----------------------------------------------------------------------\n\
     CMSC 427 - Project 2.\n\
-    - Use 'a' and 's' to move your cannon left and right.\n\
-    - Hit 'f' to enter fullscreen mode.\n\
-    - Hit '+' and '-' to alter the animation speed\n\
-    (make sure to hit shift correctly).\n\
-    - Hit 'r' too reset.\n\
-    - Hit 'q' to quit.\n\
+    - See the README for instructions.\n\
     -----------------------------------------------------------------------\n";
     
     RegisterCallbacks();
@@ -116,7 +111,7 @@ void BubbleGame::Reset() {
     skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f));
     AddObstacles();
     
-    ball_ = new BGBall(Vector3d(0,0,1000.0f));
+    ball_ = new BGBall(Vector3d(500.0f,500.0f,1500.0f));
     ball_->set_supporting_platform(ground_);
     ball_->set_obstacles(&obstacles_);
     

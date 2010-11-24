@@ -96,7 +96,6 @@ void BGBall::Tick(int time_elapsed) {
         }
     }
     
-    // TODO - This collision algorithm needs serious work
     // Are we colliding with the top?
     float support_platform_z = support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5;
     if ((original_pos.z - BGBall::RADIUS) >= support_platform_z &&
