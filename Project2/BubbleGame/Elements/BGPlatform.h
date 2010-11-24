@@ -20,6 +20,7 @@ public:
     
     virtual void Draw();
     virtual void Tick(int time_elapsed);
+    void DrawObject();
     
     static const float X_SIZE = 2500.0f;
     static const float Y_SIZE = 2500.0f;

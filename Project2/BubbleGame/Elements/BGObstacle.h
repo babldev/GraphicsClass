@@ -22,6 +22,8 @@ public:
     
     virtual void Draw();
     virtual void Tick(int time_elapsed);
+    void DrawObject();
+    
     float radius() {
         return BGObstacle::RADIUS;
     }

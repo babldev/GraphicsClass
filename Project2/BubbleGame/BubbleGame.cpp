@@ -109,14 +109,14 @@ void BubbleGame::Reset() {
     
     ground_ = new BGPlatform(Vector3d(0, 0, 0));
     skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f));
-    AddObstacles();
     
     ball_ = new BGBall(Vector3d(500.0f,500.0f,1500.0f));
     ball_->set_supporting_platform(ground_);
     ball_->set_obstacles(&obstacles_);
     
-    window_->AddChild(ground_);
     window_->AddChild(skybox_);
+    window_->AddChild(ground_);
+    AddObstacles();
     window_->AddChild(ball_); // Added last for transparency
     
     last_tick_ = GetMilliCount();
@@ -133,7 +133,7 @@ void BubbleGame::RegisterCallbacks() {
 }
 
 void BubbleGame::OnDisplayEvent(void) {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // clear the window
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear the window
     
     // Update the camera
     camera_center_ = Vector3d(ball_->pos_.x,
@@ -209,10 +209,13 @@ void BubbleGame::AddLighting() {
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lt0Intensity);
     glLightfv(GL_LIGHT0, GL_SPECULAR, lt0Intensity);
     
-    GLfloat lt0Position[4] = {-5.0f, -5.0f, 10.0f, 0.0f};
+    GLfloat lt0Position[4] = {-1.0f, -1.0f, 1.0f, 0.0f};
     glLightfv(GL_LIGHT0, GL_POSITION, lt0Position); // attenuation params (a,b,c)
+    glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 0.0f);
+    glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION,	0.0f);
+    glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.001f);
     glEnable(GL_LIGHT0);
-    
+
     // (3) Spotlight lighting
     GLfloat lt1Intensity[4] = {0.3f, 0.3f, 0.3f, 1.0f}; // white
     glLightfv(GL_LIGHT1, GL_DIFFUSE, lt1Intensity);
@@ -224,7 +227,7 @@ void BubbleGame::AddLighting() {
     glLightf(GL_LIGHT1, GL_LINEAR_ATTENUATION,	0.0f);
     glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, 0.001f);
     glEnable(GL_LIGHT1);
-    
+
     // (4) Spotlight lighting
     GLfloat lt2Intensity[4] = {0.3f, 0.3f, 0.3f, 1.0f}; // white
     glLightfv(GL_LIGHT2, GL_DIFFUSE, lt2Intensity);
@@ -236,6 +239,7 @@ void BubbleGame::AddLighting() {
     glLightf(GL_LIGHT2, GL_LINEAR_ATTENUATION,	0.0f);
     glLightf(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.0005f);
     glEnable(GL_LIGHT2);
+    
 
     checkGLerror("lighting setup");
 }

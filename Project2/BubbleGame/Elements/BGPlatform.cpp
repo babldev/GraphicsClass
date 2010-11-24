@@ -25,6 +25,19 @@
 #include <iostream>
 
 void BGPlatform::Draw() {
+    glDisable(GL_DEPTH_TEST);
+    glColorMask(0, 0, 0, 0);
+    glStencilFunc(GL_ALWAYS, 1, 1);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+    glEnable(GL_STENCIL_TEST);
+        DrawObject();
+    glDisable(GL_STENCIL_TEST);
+    glEnable(GL_DEPTH_TEST);
+    glColorMask(1, 1, 1, 1);
+    DrawObject();
+}
+
+void BGPlatform::DrawObject() {
     GLfloat diffuse_color[] = {0.4f, 0.4f, 0.4f, 1.0f};
     
     // set object colors

@@ -6,6 +6,7 @@ BUBBLE_GAME_OBJS = \
 BubbleGame/Elements/BGBall.o \
 BubbleGame/Elements/BGSkybox.o \
 BubbleGame/Elements/BGPlatform.o \
+BubbleGame/Elements/BGObstacle.o \
 BubbleGame/BubbleGame.o
 
 GRAPHICS_LIB_OBJS = \

@@ -27,19 +27,33 @@
 void BGObstacle::Draw() {
     GLfloat diffuse_color[] = {1.0f, 1.0f, 0.0f, 1.0f};
     GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    const GLdouble shadow_proj_matrix[] = {
+        1.0f, 0, 0, 0,
+        0, 1.0f, 0, 0,
+        1.0f, 1.0f, 0, 0,
+        0, 0, 50.1f, 1.0f};
     
-    // (1) Draw Sphere
-    // set object colors
+    glDisable(GL_LIGHTING);
+    glPushMatrix();
+        glColor4f(0.0f, 0.0f, 0.0f, 0.3f);
+        glMultMatrixd(shadow_proj_matrix);
+        // glMatrixMode(GL_MODELVIEW);
+        DrawObject();
+        // glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glEnable(GL_LIGHTING);
+    glColor4f(1, 1, 1, 1.0f);
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, diffuse_color);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_color);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50);
     
+    DrawObject();
+}
+
+void BGObstacle::DrawObject() {
     glPushMatrix();
-    glTranslatef(pos_.x, pos_.y, pos_.z);
-    
-    // Create ball
-    // glColor4f(0.0f,1.0f,0.0f,0.6f);
-    glutSolidSphere(BGObstacle::RADIUS, BGObstacle::GLUT_SLICES, BGObstacle::GLUT_SLICES);
+        glTranslatef(pos_.x, pos_.y, pos_.z);
+        glutSolidSphere(BGObstacle::RADIUS, BGObstacle::GLUT_SLICES, BGObstacle::GLUT_SLICES);
     glPopMatrix();
 }
 

@@ -25,43 +25,45 @@
 #include <iostream>
 
 void BGBall::Draw() {
-    GLfloat diffuse_color[] = {1.0f, 0.0f, 1.0f, 0.2f};
-    GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 0.2f};
+    GLfloat diffuse_color[] = {0, 1.0f, 1.0f, 0.5f};
+    GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    const GLdouble shadow_proj_matrix[] = {
+        1.0f, 0, 0, 0,
+        0, 1.0f, 0, 0,
+        1.0f, 1.0f, 0, 0,
+        0, 0, 50.1f, 1.0f};
     
-    // (1) Draw Sphere
-    // set object colors
+    // FIXME: Temporary hardcoded shadow fix
+    if (pos_.z > 25.0f) {
+        glStencilFunc(GL_EQUAL, 1, 1);
+        glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+        glEnable(GL_STENCIL_TEST);
+        
+        glDisable(GL_LIGHTING);
+        glPushMatrix();
+        glColor4f(0.0f, 0.0f, 0.0f, 0.15f);
+        glMultMatrixd(shadow_proj_matrix);
+        // glMatrixMode(GL_MODELVIEW);
+        DrawObject();
+        // glMatrixMode(GL_PROJECTION);
+        glPopMatrix();
+        glEnable(GL_LIGHTING);
+        glColor4f(1, 1, 1, 1.0f);
+        
+        glDisable(GL_STENCIL_TEST);
+    }
+    
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, diffuse_color);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_color);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50);
-    
+    DrawObject();
+}
+
+void BGBall::DrawObject() {
     glPushMatrix();
-        glTranslatef(pos_.x, pos_.y, pos_.z);
-    
-        // Create ball
-        // glColor4f(0.0f,1.0f,0.0f,0.6f);
-        glutSolidSphere(BGBall::RADIUS, BGBall::GLUT_SLICES, BGBall::GLUT_SLICES);
+    glTranslatef(pos_.x, pos_.y, pos_.z);
+    glutSolidSphere(BGBall::RADIUS, BGBall::GLUT_SLICES, BGBall::GLUT_SLICES);
     glPopMatrix();
-    
-    /*
-    // (2) Add Shadow
-   
-    glPushMatrix();
-    glTranslatef(pos_.x, pos_.y, support_platform_->pos_.z+BGPlatform::Z_SIZE-BGBall::RADIUS+400.0f);
-    glBegin(GL_POLYGON);
-    glColor3f(0.0f, 0.0f, 0.0f);
-    
-    for (int i = 0; i < 360; i += (360 / BGBall::GLUT_SLICES)) {
-        float deg_in_rad = i * GLWindow::DEGREES_TO_RADIANS;
-        
-        GLfloat x_pixel = cos(deg_in_rad) * BGBall::RADIUS;
-        GLfloat y_pixel = sin(deg_in_rad) * BGBall::RADIUS;
-        
-        glVertex3f(x_pixel, y_pixel, 0.0f);
-    }
-    glEnd();
-    glPopMatrix();
-    glEnable(GL_LIGHTING);
-     */
 }
 
 void BGBall::Tick(int time_elapsed) {
