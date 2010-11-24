@@ -56,6 +56,10 @@ public:
         children_.remove(child);
     }
     
+    void ClearChildren() {
+        children_.clear();
+    }
+    
     float animation_speed() {
         return animation_speed_;
     }

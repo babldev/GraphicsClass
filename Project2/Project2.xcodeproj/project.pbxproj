@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4195DDF9129C4ED5004EB532 /* Vector3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4195DDF8129C4ED5004EB532 /* Vector3d.cpp */; };
 		4195DDFD129C4EE4004EB532 /* RGBpixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4195DDFB129C4EE4004EB532 /* RGBpixmap.cpp */; };
+		4195E014129C8C47004EB532 /* BGObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4195E013129C8C47004EB532 /* BGObstacle.cpp */; };
 		41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D047AF12767A7500EF94D0 /* BGPlatform.cpp */; };
 		41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04AED12776C3200EF94D0 /* BGSkybox.cpp */; };
 		41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04BFE1277854C00EF94D0 /* GLerror.cpp */; };
@@ -43,6 +44,8 @@
 		4195DDFA129C4EE4004EB532 /* RGBpixmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBpixmap.h; sourceTree = "<group>"; };
 		4195DDFB129C4EE4004EB532 /* RGBpixmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RGBpixmap.cpp; sourceTree = "<group>"; };
 		4195DDFC129C4EE4004EB532 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		4195E012129C8C47004EB532 /* BGObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGObstacle.h; sourceTree = "<group>"; };
+		4195E013129C8C47004EB532 /* BGObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGObstacle.cpp; sourceTree = "<group>"; };
 		41D047AE12767A7500EF94D0 /* BGPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGPlatform.h; sourceTree = "<group>"; };
 		41D047AF12767A7500EF94D0 /* BGPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGPlatform.cpp; sourceTree = "<group>"; };
 		41D04AE212776B7900EF94D0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				41D047AF12767A7500EF94D0 /* BGPlatform.cpp */,
 				41D04AEC12776C3200EF94D0 /* BGSkybox.h */,
 				41D04AED12776C3200EF94D0 /* BGSkybox.cpp */,
+				4195E012129C8C47004EB532 /* BGObstacle.h */,
+				4195E013129C8C47004EB532 /* BGObstacle.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */,
 				4195DDF9129C4ED5004EB532 /* Vector3d.cpp in Sources */,
 				4195DDFD129C4EE4004EB532 /* RGBpixmap.cpp in Sources */,
+				4195E014129C8C47004EB532 /* BGObstacle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

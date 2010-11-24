@@ -25,8 +25,8 @@
 #include <iostream>
 
 void BGBall::Draw() {
-    GLfloat diffuse_color[] = {1.0f, 0.0f, 1.0f, 0.5f};
-    GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 0.5f};
+    GLfloat diffuse_color[] = {1.0f, 0.0f, 1.0f, 0.2f};
+    GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 0.2f};
     
     // (1) Draw Sphere
     // set object colors
@@ -70,10 +70,37 @@ void BGBall::Tick(int time_elapsed) {
     GLMovable::Tick(time_elapsed);
     vel_ /= BGBall::AIR_RESISTANCE;
     
+    list<BGObstacle*>::iterator ob_it;
+    for (ob_it = obstacles_->begin(); ob_it != obstacles_->end(); ob_it++) {
+        Vector3d orig_distance_vector = (*ob_it)->pos_ - original_pos;
+        float orig_collision_amount = (*ob_it)->radius() + BGBall::RADIUS - 
+        orig_distance_vector.length();
+        
+        // If there wasn't a collision originally...
+        if (orig_collision_amount <= 0) {
+            Vector3d distance_vector = (*ob_it)->pos_ - pos_;
+            float collision_amount = (*ob_it)->radius() + BGBall::RADIUS - distance_vector.length();
+            
+            // And there is one now
+            if (collision_amount > 0) {
+                // Update the velocity and position to handle the collision
+                cout << "Collision!" << endl;
+                Vector3d v_par = Vector3d::parProject(vel_, distance_vector);
+                Vector3d v_orth = vel_ - v_par;
+                vel_ = v_orth - COLLISION_DAMP * v_par; // Apply the new dampened velocity
+                
+                // Separate the collided objects
+                distance_vector.normalize();
+                pos_ += (Vector3d::zero() - distance_vector) * collision_amount;
+            }
+        }
+    }
+    
     // TODO - This collision algorithm needs serious work
     // Are we colliding with the top?
-    if ((original_pos.z - BGBall::RADIUS) > (support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5) &&
-            (pos_.z - BGBall::RADIUS) < (support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5)) {
+    float support_platform_z = support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5;
+    if ((original_pos.z - BGBall::RADIUS) >= support_platform_z &&
+                (pos_.z - BGBall::RADIUS) < support_platform_z) {
         if (pos_.x < support_platform_->pos_.x + BGPlatform::X_SIZE*0.5f &&
             pos_.x > support_platform_->pos_.x - BGPlatform::X_SIZE*0.5f &&
             pos_.y < support_platform_->pos_.y + BGPlatform::Y_SIZE*0.5f &&

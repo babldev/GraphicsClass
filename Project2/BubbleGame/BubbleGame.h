@@ -12,6 +12,7 @@
 #include "BubbleGame/Elements/BGBall.h"
 #include "BubbleGame/Elements/BGPlatform.h"
 #include "BubbleGame/Elements/BGSkybox.h"
+#include "BubbleGame/Elements/BGObstacle.h"
 
 class BubbleGame {
 public:
@@ -60,6 +61,7 @@ public:
 private:
     void RegisterCallbacks();
     void Reset();
+    void AddObstacles();
     void AutoZoomCamera();
     void AddLighting();
     
@@ -82,6 +84,7 @@ protected:
     
     // Helper pointers
     BGBall* ball_;
+    std::list<BGObstacle*> obstacles_;
     BGPlatform* ground_;
     BGSkybox* skybox_;
     

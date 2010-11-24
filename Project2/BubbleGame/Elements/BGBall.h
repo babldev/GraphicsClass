@@ -9,6 +9,10 @@
 
 #include "GraphicsLib/GLMovable.h"
 #include "BubbleGame/Elements/BGPlatform.h"
+#include "BubbleGame/Elements/BGObstacle.h"
+
+#include <list>
+using namespace std;
 
 class BGBall : public GLMovable {
 public:
@@ -26,12 +30,17 @@ public:
         support_platform_ = platform;
     }
     
+    void set_obstacles(std::list<BGObstacle*>* obstacles) {
+        obstacles_ = obstacles;
+    }
+    
     static const int GLUT_SLICES = 60;
     static const float RADIUS = 50.0f;
     static const float POKE_VEL_CHANGE = 30.0f;
     static const float AIR_RESISTANCE = 1.001f;
-    static const float COLLISION_DAMP = 0.85f;
+    static const float COLLISION_DAMP = 0.55f;
 protected:
     bool alive_; // True if the ball is still on screen
     BGPlatform* support_platform_;
+    std::list<BGObstacle*> *obstacles_;
 };

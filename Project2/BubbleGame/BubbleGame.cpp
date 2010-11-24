@@ -94,6 +94,8 @@ void BubbleGame::Reset() {
     camera_elevation_angle_ = 315.0f;
     camera_azimuth_angle_ = 35.0f;
     
+    window_->ClearChildren();
+    obstacles_.clear();
     if (ball_ != NULL) {
         window_->RemoveChild(ball_);
         delete ball_;
@@ -110,10 +112,13 @@ void BubbleGame::Reset() {
         skybox_ = NULL;
     }
     
-    ball_ = new BGBall(Vector3d(0,0,1000.0f));
     ground_ = new BGPlatform(Vector3d(0, 0, 0));
     skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f));
+    AddObstacles();
+    
+    ball_ = new BGBall(Vector3d(0,0,1000.0f));
     ball_->set_supporting_platform(ground_);
+    ball_->set_obstacles(&obstacles_);
     
     window_->AddChild(ground_);
     window_->AddChild(skybox_);
@@ -159,6 +164,15 @@ void BubbleGame::OnDisplayEvent(void) {
     window_->Draw();
     
     glutSwapBuffers();                          // swap buffers
+}
+
+void BubbleGame::AddObstacles() {
+    for (int i = -3; i < 3; i++) {
+        BGObstacle* new_obstacle = new BGObstacle(Vector3d(300.0f*i, 300.0f*i, 300.0f));
+        new_obstacle->set_supporting_platform(ground_);
+        obstacles_.push_back(new_obstacle);
+        window_->AddChild(new_obstacle);
+    }
 }
 
 void BubbleGame::AutoZoomCamera() {
