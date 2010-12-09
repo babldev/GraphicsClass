@@ -1,16 +1,16 @@
 //----------------------------------------------------------------------
-// File:            RGBpixmap.cpp
-// Description:     Pixmap storage object
-// Programmer:      Dave Mount
-// Date:            Fall 2010
-// Source:          Adapted from the code from F. S. Hill's book,
-//                  "Computer Graphics Using OpenGL", Prentice Hall,
-//                  2000.
+//      File:           RGBpixmap.cpp
+//      Description:    Pixmap storage object
+//      Programmer:     Dave Mount
+//      Date:           April 2004
+//      Source:         Adapted from the code from F. S. Hill's book,
+//                      "Computer Graphics Using OpenGL", Prentice Hall,
+//                      2000.
 //
-// See the file RGBpixmap.h for information.
+//      See the file RGBpixmap.h for information.
 //
-// Beware: This procedure has not been carefully tested.  Use at
-// your own risk.  Report errors to Dave Mount (mount@cs.umd.edu).
+//      Beware: This procedure has not been carefully tested.  Use at
+//      your own risk.  Report errors to Dave Mount (mount@cs.umd.edu).
 //----------------------------------------------------------------------
 
 #include "RGBpixmap.h"                   // pixel map definitions
@@ -57,7 +57,7 @@ void RGBpixmap::RGBerror(const string& msg, bool fatal) const
 {
     if (fatal) {
         std::cerr << "Error: " << msg << std::endl;
-                                        // close files
+										// close files
         if (bmpIn != NULL) bmpIn->close();
         if (bmpOut != NULL) bmpOut->close();
     }
@@ -74,11 +74,10 @@ void RGBpixmap::RGBerror(const string& msg, bool fatal) const
 //----------------------------------------------------------------------
 void RGBpixmap::freeIt() {                      // deallocate everything
     delete [] pixel;
-    pixel = NULL;
     nRows = nCols = 0;
     if (bmpIn != NULL) {
         bmpIn->close();
-        bmpIn = NULL;
+        delete bmpIn;
     }
 }
 

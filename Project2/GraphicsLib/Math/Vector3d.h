@@ -103,7 +103,6 @@ public:
 										// additional utilities
 	static double dist(const Vector3d& v, const Vector3d& w);
 	static double dot(const Vector3d& v, const Vector3d& w);
-    static double angle(const Vector3d& v, const Vector3d& w);
 	static Vector3d cross(const Vector3d& v, const Vector3d& w);
 	static Vector3d parProject(const Vector3d& v, const Vector3d& w);
 	static Vector3d orthProject(const Vector3d& v, const Vector3d& w);

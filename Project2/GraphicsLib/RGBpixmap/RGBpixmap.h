@@ -1,11 +1,11 @@
 //----------------------------------------------------------------------
-// File:            RGBpixmap.h
-// Description:     Pixmap storage object
-// Programmer:      Dave Mount
-// Date:            Fall 2010
-// Source:          Adapted from the code from F. S. Hill's book,
-//                  "Computer Graphics Using OpenGL", Prentice Hall,
-//                  2000.
+//      File:           RGBpixmap.h
+//      Description:    Pixmap storage object
+//      Programmer:     Dave Mount
+//      Date:           April 2004
+//      Source:         Adapted from the code from F. S. Hill's book,
+//                      "Computer Graphics Using OpenGL", Prentice Hall,
+//                      2000.
 //----------------------------------------------------------------------
 //      See the file ReadMe.txt for further information.
 //

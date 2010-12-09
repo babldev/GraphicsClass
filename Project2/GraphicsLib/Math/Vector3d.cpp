@@ -144,10 +144,6 @@ double Vector3d::dot(const Vector3d& v, const Vector3d& w)
 {
 	return  (v.x * w.x) + (v.y * w.y) + (v.z * w.z);
 }
-
-double Vector3d::angle(const Vector3d& v, const Vector3d& w) {
-    return acos(Vector3d::dot(v, w) / (v.length() * w.length()));
-}
 										// cross product
 Vector3d Vector3d::cross(const Vector3d& v, const Vector3d& w)
 {
@@ -213,8 +209,8 @@ Vector3d Vector3d::sphericalToCartesian(const Vector3d& v)
 //	Common vectors
 //----------------------------------------------------------------------
 Vector3d Vector3d::zero()  { return Vector3d(0, 0, 0); }
-Vector3d Vector3d::yUnit() { return Vector3d(1, 0, 0); }
-Vector3d Vector3d::xUnit() { return Vector3d(0, 1, 0); }
+Vector3d Vector3d::xUnit() { return Vector3d(1, 0, 0); }
+Vector3d Vector3d::yUnit() { return Vector3d(0, 1, 0); }
 Vector3d Vector3d::zUnit() { return Vector3d(0, 0, 1); }
 
 //----------------------------------------------------------------------
