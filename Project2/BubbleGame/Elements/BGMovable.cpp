@@ -7,6 +7,6 @@
  *
  */
 
-#include "BGMovable.h"
+#include "BubbleGame/Elements/BGMovable.h"
 
 const Vector3d BGMovable::GRAVITY = Vector3d(0, 0, -10.0f);

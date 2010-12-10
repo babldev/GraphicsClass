@@ -7,8 +7,8 @@
 //  For:            CMSC 427 - Fall 2010
 //-----------------------------------------------------------------------
 
-#include "Utilities.h"
-#include "Vector3d.h"					// for geometric constants
+#include "Utilities/Utilities.h"
+#include "GraphicsLib/Math/Vector3d.h"	// for geometric constants
 
 using namespace std;					// make std:: accessible
 

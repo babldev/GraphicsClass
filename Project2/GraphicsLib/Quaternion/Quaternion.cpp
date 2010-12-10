@@ -7,8 +7,8 @@
 //  For:            CMSC 427 - Fall 2010
 //-----------------------------------------------------------------------
 
-#include "Quaternion.h"
-#include "Utilities.h"
+#include "GraphicsLib/Quaternion/Quaternion.h"
+#include "Utilities/Utilities.h"
 
 //-----------------------------------------------------------------------
 //	SimpleMatrix methods

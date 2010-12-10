@@ -10,7 +10,7 @@
 #ifndef QUATERNION_H
 #define QUATERNION_H
 
-#include "Vector3d.h"
+#include "GraphicsLib/Math/Vector3d.h"
 
 //-----------------------------------------------------------------------
 //	SimpleMatrix - a very simple matrix object

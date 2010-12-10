@@ -7,7 +7,7 @@
 //  For:            CMSC 427 - Fall 2010
 //-----------------------------------------------------------------------
 
-#include "Vector3d.h"
+#include "GraphicsLib/Math/Vector3d.h"
 
 using namespace std;					// make std:: accessible
 

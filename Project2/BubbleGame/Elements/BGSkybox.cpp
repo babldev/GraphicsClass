@@ -7,7 +7,7 @@
  *
  */
 
-#include "BGSkybox.h"
+#include "BubbleGame/Elements/BGSkybox.h"
 
 #include "GraphicsLib/GLWindow.h"
 #include "GraphicsLib/GLerror.h"

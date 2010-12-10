@@ -7,7 +7,7 @@
  *
  */
 
-#include "BGObstacle.h"
+#include "BubbleGame/Elements/BGObstacle.h"
 
 #include "GraphicsLib/GLWindow.h"
 

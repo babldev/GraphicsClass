@@ -7,7 +7,7 @@
  *
  */
 
-#include "GLerror.h"
+#include "GraphicsLib/GLerror.h"
 #include <iostream>
 
 #ifdef __APPLE__ 

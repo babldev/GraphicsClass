@@ -7,7 +7,7 @@
  *
  */
 
-#include "BGPlatform.h"
+#include "BubbleGame/Elements/BGPlatform.h"
 
 #include "GraphicsLib/GLWindow.h"
 

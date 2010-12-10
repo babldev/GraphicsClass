@@ -7,7 +7,7 @@
  *
  */
 
-#include "BubbleGame.h"
+#include "BubbleGame/BubbleGame.h"
 #include "GraphicsLib/GLerror.h"
 #include "GraphicsLib/Math/Vector3d.h"
 
