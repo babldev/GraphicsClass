@@ -9,4 +9,4 @@
 
 #include "BGMovable.h"
 
-const Vector3d BGMovable::GRAVITY = Vector3d(0, 0, -20.0f);
+const Vector3d BGMovable::GRAVITY = Vector3d(0, 0, -10.0f);

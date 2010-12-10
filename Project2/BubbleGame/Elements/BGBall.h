@@ -28,10 +28,11 @@ public:
     virtual void Tick(int time_elapsed);
     void DrawObject();
     
+    void HandleCollision(Vector3d collision_vector, float collision_amount);
     void Poke(Vector3d direction);
     
     static const int GLUT_SLICES = 60;
-    static const float RADIUS = 75.0f;
+    static const float RADIUS = 35.0f;
     static const float POKE_VEL_CHANGE = 30.0f;
     static const float AIR_RESISTANCE = 1.001f;
     static const float COLLISION_DAMP = 0.55f;

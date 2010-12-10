@@ -11,6 +11,7 @@
 		41D047B012767A7500EF94D0 /* BGPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D047AF12767A7500EF94D0 /* BGPlatform.cpp */; };
 		41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04AED12776C3200EF94D0 /* BGSkybox.cpp */; };
 		41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D04BFE1277854C00EF94D0 /* GLerror.cpp */; };
+		41D9B48E12B1F50100F70934 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D9B48C12B1F50100F70934 /* Utilities.cpp */; };
 		41F1F83B127498D9005DDEFA /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F83A127498D9005DDEFA /* GLUT.framework */; };
 		41F1F83F127498E1005DDEFA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F83E127498E1005DDEFA /* OpenGL.framework */; };
 		41F1F8CC127658C3005DDEFA /* GLDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8BF127658C3005DDEFA /* GLDrawable.cpp */; };
@@ -19,7 +20,6 @@
 		41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8D2127658D0005DDEFA /* BubbleGame.cpp */; };
 		41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8F212765A4A005DDEFA /* BGBall.cpp */; };
 		41FFC5DF12B1B30A006FDF2C /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41FFC5DB12B1B30A006FDF2C /* Quaternion.cpp */; };
-		41FFC5E012B1B30A006FDF2C /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41FFC5DD12B1B30A006FDF2C /* Utilities.cpp */; };
 		41FFC65C12B1CD1D006FDF2C /* BGMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41FFC65B12B1CD1D006FDF2C /* BGMovable.cpp */; };
 		85AB75A012B1646B0093FB5C /* Vector3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85AB759F12B1646B0093FB5C /* Vector3d.cpp */; };
 		85AB75A512B164D30093FB5C /* RGBpixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85AB75A312B164D30093FB5C /* RGBpixmap.cpp */; };
@@ -51,6 +51,8 @@
 		41D04AED12776C3200EF94D0 /* BGSkybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGSkybox.cpp; sourceTree = "<group>"; };
 		41D04BFD1277854C00EF94D0 /* GLerror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLerror.h; sourceTree = "<group>"; };
 		41D04BFE1277854C00EF94D0 /* GLerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLerror.cpp; sourceTree = "<group>"; };
+		41D9B48C12B1F50100F70934 /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
+		41D9B48D12B1F50100F70934 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		41F1F83A127498D9005DDEFA /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		41F1F83E127498E1005DDEFA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		41F1F85A127650B9005DDEFA /* skybox-clouds.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "skybox-clouds.bmp"; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 		41F1F8F212765A4A005DDEFA /* BGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGBall.cpp; sourceTree = "<group>"; };
 		41FFC5DB12B1B30A006FDF2C /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
 		41FFC5DC12B1B30A006FDF2C /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
-		41FFC5DD12B1B30A006FDF2C /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
-		41FFC5DE12B1B30A006FDF2C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		41FFC65A12B1CD1D006FDF2C /* BGMovable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMovable.h; sourceTree = "<group>"; };
 		41FFC65B12B1CD1D006FDF2C /* BGMovable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGMovable.cpp; sourceTree = "<group>"; };
 		85AB759E12B1646B0093FB5C /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
@@ -109,6 +109,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				41D9B48B12B1F50100F70934 /* Utilities */,
 				41F1F8D1127658D0005DDEFA /* BubbleGame */,
 				41F1F8BD127658C3005DDEFA /* GraphicsLib */,
 				41F1F85C127650BF005DDEFA /* data */,
@@ -125,6 +126,15 @@
 				8DD76F6C0486A84900D96B5E /* Project2 */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		41D9B48B12B1F50100F70934 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				41D9B48C12B1F50100F70934 /* Utilities.cpp */,
+				41D9B48D12B1F50100F70934 /* Utilities.h */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		41F1F859127650B9005DDEFA /* Images */ = {
@@ -213,8 +223,6 @@
 			children = (
 				41FFC5DB12B1B30A006FDF2C /* Quaternion.cpp */,
 				41FFC5DC12B1B30A006FDF2C /* Quaternion.h */,
-				41FFC5DD12B1B30A006FDF2C /* Utilities.cpp */,
-				41FFC5DE12B1B30A006FDF2C /* Utilities.h */,
 			);
 			path = Quaternion;
 			sourceTree = "<group>";
@@ -289,8 +297,8 @@
 				85AB75A012B1646B0093FB5C /* Vector3d.cpp in Sources */,
 				85AB75A512B164D30093FB5C /* RGBpixmap.cpp in Sources */,
 				41FFC5DF12B1B30A006FDF2C /* Quaternion.cpp in Sources */,
-				41FFC5E012B1B30A006FDF2C /* Utilities.cpp in Sources */,
 				41FFC65C12B1CD1D006FDF2C /* BGMovable.cpp in Sources */,
+				41D9B48E12B1F50100F70934 /* Utilities.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

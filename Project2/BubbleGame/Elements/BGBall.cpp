@@ -10,6 +10,7 @@
 #include "BubbleGame/Elements/BGBall.h"
 #include "GraphicsLib/GLWindow.h"
 #include "BubbleGame/BubbleGame.h"
+#include "Utilities/Utilities.h"
 
 #ifdef __APPLE__
 #include <OPENGL/gl.h>
@@ -70,43 +71,51 @@ void BGBall::DrawObject() {
 }
 
 void BGBall::Tick(int time_elapsed) {
-    Vector3d original_pos = pos_;
-    
     GLMovable::Tick(time_elapsed);
     vel_ /= BGBall::AIR_RESISTANCE;
     
     /* Check for Ball/Obstacle collision. Simple collisions between 2 spheres. */
     const set<BGObstacle*> obstacles = game_.obstacles();
     for (set<BGObstacle*>::iterator ob_it = obstacles.begin(); ob_it != obstacles.end(); ob_it++) {
-        Vector3d orig_distance_vector = (*ob_it)->pos_ - original_pos;
-        float orig_collision_amount = (*ob_it)->radius() + BGBall::RADIUS - 
-        orig_distance_vector.length();
+        Vector3d collision_vector = (*ob_it)->pos_ - pos_;
+        float collision_amount = (*ob_it)->radius() + BGBall::RADIUS - collision_vector.length();
         
-        // If there wasn't a collision originally...
-        if (orig_collision_amount <= 0) {
-            Vector3d distance_vector = (*ob_it)->pos_ - pos_;
-            float collision_amount = (*ob_it)->radius() + BGBall::RADIUS - distance_vector.length();
-            
-            // And there is one now
-            if (collision_amount > 0) {
-                // Update the velocity and position to handle the collision
-                cout << "Collision!" << endl;
-                Vector3d v_par = Vector3d::parProject(vel_, distance_vector);
-                Vector3d v_orth = vel_ - v_par;
-                vel_ = v_orth - COLLISION_DAMP * v_par; // Apply the new dampened velocity
-                
-                // Separate the collided objects
-                distance_vector.normalize();
-                pos_ += (Vector3d::zero() - distance_vector) * collision_amount;
-            }
+        // And there is one now
+        if (collision_amount > 0) {
+            HandleCollision(collision_vector, collision_amount);
         }
     }
     
     /* Check for Ball/Platform collision. A little more complicated collision between a sphere and
      * box. */
-    const set <BGPlatform*> platforms = game_.platforms();
+    const set<BGPlatform*> platforms = game_.platforms();
     for (set<BGPlatform*>::iterator p_it = platforms.begin(); p_it != platforms.end(); p_it++) {
+        BGPlatform* platform = *p_it;
+        Vector3d p_center = platform->pos();
+        Vector3d p_size = platform->size() / 2;
+        
+        Vector3d closest_point = Vector3d(
+                clamp(pos_.x, p_center.x - p_size.x, p_center.x + p_size.x),
+                clamp(pos_.y, p_center.y - p_size.y, p_center.y + p_size.y),
+                clamp(pos_.z, p_center.z - p_size.z, p_center.z + p_size.z));
+        Vector3d collision_vector = closest_point - pos_;
+        float collision_amount = RADIUS - collision_vector.length();
+        
+        if (collision_amount >= 0) {
+            HandleCollision(collision_vector, collision_amount);
+        }
     }
+}
+
+void BGBall::HandleCollision(Vector3d collision_vector, float collision_amount) {
+    collision_vector.normalize();
+    
+    Vector3d v_par = Vector3d::parProject(vel_, collision_vector);
+    Vector3d v_orth = vel_ - v_par;
+    vel_ = v_orth - COLLISION_DAMP * v_par; // Apply the new dampened velocity
+    
+    // Separate the collided objects
+    pos_ += (Vector3d::zero() - collision_vector) * collision_amount;
 }
 
 void BGBall::Poke(Vector3d direction) {

@@ -23,6 +23,10 @@ public:
     virtual void Tick(int time_elapsed);
     void DrawObject();
     
+    Vector3d size() {
+        return Vector3d(X_SIZE, Y_SIZE, height_);
+    }
+
     static const float X_SIZE = 250.0f;
     static const float Y_SIZE = 250.0f;
 protected:

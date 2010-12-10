@@ -48,7 +48,7 @@ void BGPlatform::DrawObject() {
     glPushMatrix();
         glTranslatef(pos_.x, pos_.y, pos_.z);
         glScalef(BGPlatform::X_SIZE, BGPlatform::Y_SIZE, height_);
-        glutSolidCube(1);
+        glutSolidCube(1.0f);
     glPopMatrix();
 }
 
