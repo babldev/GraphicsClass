@@ -17,6 +17,9 @@
 #include "BubbleGame/Elements/BGSkybox.h"
 #include "BubbleGame/Elements/BGObstacle.h"
 
+#include <set>
+using namespace std;
+
 class BubbleGame {
 public:
     BubbleGame() {

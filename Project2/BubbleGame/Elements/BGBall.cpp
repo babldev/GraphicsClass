@@ -63,16 +63,29 @@ void BGBall::Draw() {
 void BGBall::DrawObject() {
     glPushMatrix();
         glTranslatef(pos_.x, pos_.y, pos_.z);
+    
+        glMultMatrixd(ang_pos_.getRotationMatrix().oglMat());
+        
         glScalef(BGBall::RADIUS, BGBall::RADIUS, BGBall::RADIUS);
         glutSolidSphere(1.0f, BGBall::GLUT_SLICES, BGBall::GLUT_SLICES);
-    glScalef(1.1f, 1.1f, 1.1f);
+        
+        // Add geometry to show rotation
+        glScalef(1.1f, 1.1f, 1.1f);
         glutSolidIcosahedron();
     glPopMatrix();
 }
 
 void BGBall::Tick(int time_elapsed) {
     GLMovable::Tick(time_elapsed);
-    vel_ /= BGBall::AIR_RESISTANCE;
+    vel_ *= BGBall::AIR_RESISTANCE;
+    ang_vel_ *= BGBall::AIR_RESISTANCE;
+        
+    double dt = time_elapsed * window_->animation_speed();
+    Quaternion w_quat;
+    w_quat.setSAndV(0, ang_vel_);
+    Quaternion q_dot = 0.5f * (w_quat * ang_pos_);
+    ang_pos_ = ang_pos_ + q_dot * dt;
+    ang_pos_.normalize();
     
     /* Check for Ball/Obstacle collision. Simple collisions between 2 spheres. */
     const set<BGObstacle*> obstacles = game_.obstacles();
@@ -113,6 +126,8 @@ void BGBall::HandleCollision(Vector3d collision_vector, float collision_amount) 
     Vector3d v_par = Vector3d::parProject(vel_, collision_vector);
     Vector3d v_orth = vel_ - v_par;
     vel_ = v_orth - COLLISION_DAMP * v_par; // Apply the new dampened velocity
+    
+    ang_vel_ = (1 / RADIUS) * Vector3d::cross(v_orth, collision_vector);
     
     // Separate the collided objects
     pos_ += (Vector3d::zero() - collision_vector) * collision_amount;

@@ -13,9 +13,7 @@
 #include "BubbleGame/Elements/BGMovable.h"
 #include "BubbleGame/Elements/BGPlatform.h"
 #include "BubbleGame/Elements/BGObstacle.h"
-
-#include <set>
-using namespace std;
+#include "GraphicsLib/Quaternion/Quaternion.h"
 
 class BGBall : public BGMovable {
 public:
@@ -34,10 +32,14 @@ public:
     static const int GLUT_SLICES = 60;
     static const float RADIUS = 35.0f;
     static const float POKE_VEL_CHANGE = 30.0f;
-    static const float AIR_RESISTANCE = 1.001f;
+    static const float AIR_RESISTANCE = .998f;
     static const float COLLISION_DAMP = 0.55f;
 protected:
     bool alive_; // True if the ball is still on screen
+    
+    // Rigid State
+    Quaternion ang_pos_;
+    Vector3d ang_vel_;
 };
 
 #endif
