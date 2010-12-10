@@ -84,55 +84,47 @@ void BubbleGame::Init(int* argc, char** argv, int width, int height) {
 }
 
 void BubbleGame::Reset() {
-    camera_distance_ = 10000.0f;
-    camera_auto_distance_ = camera_distance_;
-    camera_elevation_angle_ = 315.0f;
-    camera_azimuth_angle_ = 35.0f;
-    
-    window_->ClearChildren();
-    obstacles_.clear();
-    if (ball_ != NULL) {
-        window_->RemoveChild(ball_);
+    // 1. CLEANUP
+    window_->ClearChildren();           // clear window
+    obstacles_.clear();                 // clear obstacles
+    platforms_.clear();                 // clear platform
+    if (ball_ != NULL) {                // clear ball
         delete ball_;
         ball_ = NULL;
     }
-    if (ground_grid_ != NULL) {
-        // Create the ground grid
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                window_->RemoveChild(ground_grid_[i][j]);
-                delete ground_grid_[i][j];
-            }
-        }
-    }
+
     if (skybox_ != NULL) {
         window_->RemoveChild(skybox_);
         delete skybox_;
         skybox_ = NULL;
     }
     
+    // 2. RESET
+    // Reset camera values
+    camera_distance_ = 10000.0f;
+    camera_auto_distance_ = camera_distance_;
+    camera_elevation_angle_ = 315.0f;
+    camera_azimuth_angle_ = 35.0f;
+    
     // Create the ground grid
     for (int i = 0; i < 10; i++) {
+        float x_pos = (i - 4.5) * BGPlatform::X_SIZE;
         for (int j = 0; j < 10; j++) {
-            float x_pos = (i - 4.5) * BGPlatform::X_SIZE;
             float y_pos = (j - 4.5) * BGPlatform::Y_SIZE;
             bool tall_piece = bool(i % 2) ^ bool(j % 2);
             
             // Create a grid of differing heights
-            ground_grid_[i][j] = new BGPlatform(Vector3d(x_pos, y_pos, 0), *this, tall_piece);
+            BGPlatform *new_platform = new BGPlatform(Vector3d(x_pos, y_pos, 0), *this, tall_piece);
+            platforms_.insert(new_platform);
         }
     }
-    
     skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f), *this);
     ball_ = new BGBall(Vector3d(500.0f,500.0f,1500.0f), *this);
-    ball_->set_obstacles(&obstacles_);
     
     window_->AddChild(skybox_);
-    // Add the ground grid to the rendering window
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            window_->AddChild(ground_grid_[i][j]);
-        }
+    for (set<BGPlatform*>::iterator platform_it = platforms_.begin();
+         platform_it != platforms_.end(); platform_it++) {
+        window_->AddChild(*platform_it);
     }
     AddObstacles();
     window_->AddChild(ball_); // Added last for transparency
@@ -182,8 +174,7 @@ void BubbleGame::OnDisplayEvent(void) {
 void BubbleGame::AddObstacles() {
     for (int i = -3; i < 3; i++) {
         BGObstacle* new_obstacle = new BGObstacle(Vector3d(300.0f*i, 300.0f*i, 300.0f), *this);
-        // new_obstacle->set_supporting_platform(ground_);
-        obstacles_.push_back(new_obstacle);
+        obstacles_.insert(new_obstacle);
         window_->AddChild(new_obstacle);
     }
 }

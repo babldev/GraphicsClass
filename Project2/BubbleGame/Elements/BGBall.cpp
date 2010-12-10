@@ -7,8 +7,9 @@
  *
  */
 
-#include "BGBall.h"
+#include "BubbleGame/Elements/BGBall.h"
 #include "GraphicsLib/GLWindow.h"
+#include "BubbleGame/BubbleGame.h"
 
 #ifdef __APPLE__
 #include <OPENGL/gl.h>
@@ -74,8 +75,9 @@ void BGBall::Tick(int time_elapsed) {
     GLMovable::Tick(time_elapsed);
     vel_ /= BGBall::AIR_RESISTANCE;
     
-    list<BGObstacle*>::iterator ob_it;
-    for (ob_it = obstacles_->begin(); ob_it != obstacles_->end(); ob_it++) {
+    /* Check for Ball/Obstacle collision. Simple collisions between 2 spheres. */
+    const set<BGObstacle*> obstacles = game_.obstacles();
+    for (set<BGObstacle*>::iterator ob_it = obstacles.begin(); ob_it != obstacles.end(); ob_it++) {
         Vector3d orig_distance_vector = (*ob_it)->pos_ - original_pos;
         float orig_collision_amount = (*ob_it)->radius() + BGBall::RADIUS - 
         orig_distance_vector.length();
@@ -99,20 +101,12 @@ void BGBall::Tick(int time_elapsed) {
             }
         }
     }
-    /*
-    // Are we colliding with the top?
-    float support_platform_z = support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5;
-    if ((original_pos.z - BGBall::RADIUS) >= support_platform_z &&
-                (pos_.z - BGBall::RADIUS) < support_platform_z) {
-        if (pos_.x < support_platform_->pos_.x + BGPlatform::X_SIZE*0.5f &&
-            pos_.x > support_platform_->pos_.x - BGPlatform::X_SIZE*0.5f &&
-            pos_.y < support_platform_->pos_.y + BGPlatform::Y_SIZE*0.5f &&
-            pos_.y > support_platform_->pos_.y - BGPlatform::Y_SIZE*0.5f) {
-        vel_.z *= -1 * BGBall::COLLISION_DAMP;
-        pos_.z = (support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5 + BGBall::RADIUS);
-        }
+    
+    /* Check for Ball/Platform collision. A little more complicated collision between a sphere and
+     * box. */
+    const set <BGPlatform*> platforms = game_.platforms();
+    for (set<BGPlatform*>::iterator p_it = platforms.begin(); p_it != platforms.end(); p_it++) {
     }
-     */
 }
 
 void BGBall::Poke(Vector3d direction) {

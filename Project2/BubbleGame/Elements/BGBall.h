@@ -14,13 +14,13 @@
 #include "BubbleGame/Elements/BGPlatform.h"
 #include "BubbleGame/Elements/BGObstacle.h"
 
-#include <list>
+#include <set>
 using namespace std;
 
 class BGBall : public BGMovable {
 public:
     BGBall(Vector3d pos, const BubbleGame& game) : BGMovable(pos, game) {
-        // acc_ = Vector3d(0.0f, 0.0f, -20.0f);
+        acc_ = BGMovable::GRAVITY;
     }
     ~BGBall() { }
     
@@ -30,14 +30,6 @@ public:
     
     void Poke(Vector3d direction);
     
-    void set_supporting_platform(BGPlatform* platform) {
-        support_platform_ = platform;
-    }
-    
-    void set_obstacles(std::list<BGObstacle*>* obstacles) {
-        obstacles_ = obstacles;
-    }
-    
     static const int GLUT_SLICES = 60;
     static const float RADIUS = 75.0f;
     static const float POKE_VEL_CHANGE = 30.0f;
@@ -45,8 +37,6 @@ public:
     static const float COLLISION_DAMP = 0.55f;
 protected:
     bool alive_; // True if the ball is still on screen
-    BGPlatform* support_platform_;
-    std::list<BGObstacle*> *obstacles_;
 };
 
 #endif

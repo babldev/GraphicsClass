@@ -28,10 +28,6 @@ public:
         return BGObstacle::RADIUS;
     }
     
-    void set_supporting_platform(BGPlatform* platform) {
-        support_platform_ = platform;
-    }
-    
     static const int GLUT_SLICES = 60;
     static const float RADIUS = 100.0f;
     static const float POKE_VEL_CHANGE = 30.0f;
@@ -39,7 +35,6 @@ public:
     static const float COLLISION_DAMP = 0.85f;
 protected:
     bool alive_; // True if the ball is still on screen
-    BGPlatform* support_platform_;
 };
 
 #endif /* INC_BGOBSTACLE_H */

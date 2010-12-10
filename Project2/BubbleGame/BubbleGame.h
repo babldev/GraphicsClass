@@ -46,6 +46,14 @@ public:
     static void Tick() { game.OnTick(); }
     void PokeBall(int direction);
     
+    const std::set<BGObstacle*> obstacles() const {
+        return obstacles_;
+    }
+    
+    const std::set<BGPlatform*> platforms() const {
+        return platforms_;
+    }
+    
     static const int TIMER_DELAY;
     
     static const float CAMERA_FOV_DEGREES = 30.0f;
@@ -87,8 +95,8 @@ protected:
     
     // Helper pointers
     BGBall* ball_;
-    std::list<BGObstacle*> obstacles_;
-    BGPlatform* ground_grid_[10][10];
+    std::set<BGObstacle*> obstacles_;
+    std::set<BGPlatform*> platforms_;
     BGSkybox* skybox_;
     
     int last_tick_;
