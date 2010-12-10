@@ -144,6 +144,10 @@ double Vector3d::dot(const Vector3d& v, const Vector3d& w)
 {
 	return  (v.x * w.x) + (v.y * w.y) + (v.z * w.z);
 }
+
+double Vector3d::angle(const Vector3d& v, const Vector3d& w) {
+    return acos(Vector3d::dot(v, w) / (v.length() * w.length()));
+}
 										// cross product
 Vector3d Vector3d::cross(const Vector3d& v, const Vector3d& w)
 {

@@ -18,8 +18,8 @@
 		41F1F8CE127658C3005DDEFA /* GLWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8C3127658C3005DDEFA /* GLWindow.cpp */; };
 		41F1F8D5127658D0005DDEFA /* BubbleGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8D2127658D0005DDEFA /* BubbleGame.cpp */; };
 		41F1F8F312765A4A005DDEFA /* BGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F8F212765A4A005DDEFA /* BGBall.cpp */; };
-		85AB759C12B163F90093FB5C /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85AB759812B163F90093FB5C /* Quaternion.cpp */; };
-		85AB759D12B163F90093FB5C /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85AB759A12B163F90093FB5C /* Utilities.cpp */; };
+		41FFC5DF12B1B30A006FDF2C /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41FFC5DB12B1B30A006FDF2C /* Quaternion.cpp */; };
+		41FFC5E012B1B30A006FDF2C /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41FFC5DD12B1B30A006FDF2C /* Utilities.cpp */; };
 		85AB75A012B1646B0093FB5C /* Vector3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85AB759F12B1646B0093FB5C /* Vector3d.cpp */; };
 		85AB75A512B164D30093FB5C /* RGBpixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85AB75A312B164D30093FB5C /* RGBpixmap.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -65,10 +65,10 @@
 		41F1F8D3127658D0005DDEFA /* BubbleGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleGame.h; sourceTree = "<group>"; };
 		41F1F8F112765A4A005DDEFA /* BGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGBall.h; sourceTree = "<group>"; };
 		41F1F8F212765A4A005DDEFA /* BGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BGBall.cpp; sourceTree = "<group>"; };
-		85AB759812B163F90093FB5C /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
-		85AB759912B163F90093FB5C /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
-		85AB759A12B163F90093FB5C /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
-		85AB759B12B163F90093FB5C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		41FFC5DB12B1B30A006FDF2C /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
+		41FFC5DC12B1B30A006FDF2C /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
+		41FFC5DD12B1B30A006FDF2C /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
+		41FFC5DE12B1B30A006FDF2C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		85AB759E12B1646B0093FB5C /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
 		85AB759F12B1646B0093FB5C /* Vector3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3d.cpp; sourceTree = "<group>"; };
 		85AB75A212B164D30093FB5C /* RGBpixmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBpixmap.h; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		41F1F8BD127658C3005DDEFA /* GraphicsLib */ = {
 			isa = PBXGroup;
 			children = (
-				85AB759712B163F90093FB5C /* Quternion */,
+				41FFC5DA12B1B30A006FDF2C /* Quaternion */,
 				41F1F8BF127658C3005DDEFA /* GLDrawable.cpp */,
 				41F1F8C0127658C3005DDEFA /* GLDrawable.h */,
 				41F1F8C1127658C3005DDEFA /* GLMovable.cpp */,
@@ -203,15 +203,15 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		85AB759712B163F90093FB5C /* Quternion */ = {
+		41FFC5DA12B1B30A006FDF2C /* Quaternion */ = {
 			isa = PBXGroup;
 			children = (
-				85AB759812B163F90093FB5C /* Quaternion.cpp */,
-				85AB759912B163F90093FB5C /* Quaternion.h */,
-				85AB759A12B163F90093FB5C /* Utilities.cpp */,
-				85AB759B12B163F90093FB5C /* Utilities.h */,
+				41FFC5DB12B1B30A006FDF2C /* Quaternion.cpp */,
+				41FFC5DC12B1B30A006FDF2C /* Quaternion.h */,
+				41FFC5DD12B1B30A006FDF2C /* Utilities.cpp */,
+				41FFC5DE12B1B30A006FDF2C /* Utilities.h */,
 			);
-			path = Quternion;
+			path = Quaternion;
 			sourceTree = "<group>";
 		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
@@ -250,7 +250,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Project2" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -282,10 +281,10 @@
 				41D04AEE12776C3200EF94D0 /* BGSkybox.cpp in Sources */,
 				41D04BFF1277854C00EF94D0 /* GLerror.cpp in Sources */,
 				4195E014129C8C47004EB532 /* BGObstacle.cpp in Sources */,
-				85AB759C12B163F90093FB5C /* Quaternion.cpp in Sources */,
-				85AB759D12B163F90093FB5C /* Utilities.cpp in Sources */,
 				85AB75A012B1646B0093FB5C /* Vector3d.cpp in Sources */,
 				85AB75A512B164D30093FB5C /* RGBpixmap.cpp in Sources */,
+				41FFC5DF12B1B30A006FDF2C /* Quaternion.cpp in Sources */,
+				41FFC5E012B1B30A006FDF2C /* Utilities.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

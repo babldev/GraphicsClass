@@ -14,7 +14,12 @@
 #include <string>						// C++ strings
 #include <iostream>						// C++ I/O
 #include <sys/timeb.h>					// for timer
-#include <GL/glut.h>					// OpenGL
+
+#ifdef __APPLE__ 
+#include <GLUT/glut.h> 
+#else 
+#include <GL/glut.h> 
+#endif 
 
 #ifndef M_PI							// define PI and PI/2
 #define M_PI	3.14159265358979323846
