@@ -7,15 +7,18 @@ BubbleGame/Elements/BGBall.o \
 BubbleGame/Elements/BGSkybox.o \
 BubbleGame/Elements/BGPlatform.o \
 BubbleGame/Elements/BGObstacle.o \
+BubbleGame/Elements/BGMovable.o \
 BubbleGame/BubbleGame.o
 
 GRAPHICS_LIB_OBJS = \
+GraphicsLib/Quaternion/Quaternion.o \
 GraphicsLib/GLDrawable.o \
 GraphicsLib/GLMovable.o \
 GraphicsLib/GLWindow.o \
 GraphicsLib/GLerror.o \
 GraphicsLib/Math/Vector3d.o \
-GraphicsLib/RGBpixmap/RGBpixmap.o
+GraphicsLib/RGBpixmap/RGBpixmap.o \
+Utilities/Utilities.o
 
 BubbleGame : main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS)
 	$(CXX) $(LFLAGS) main.o $(BUBBLE_GAME_OBJS) $(GRAPHICS_LIB_OBJS) -o p2

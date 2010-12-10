@@ -32,7 +32,7 @@ void BGBall::Draw() {
         1.0f, 0, 0, 0,
         0, 1.0f, 0, 0,
         1.0f, 1.0f, 0, 0,
-        0, 0, 50.1f, 1.0f};
+        0, 0, 25.1f, 1.0f};
     
     // FIXME: Temporary hardcoded shadow fix
     if (pos_.z > 25.0f) {
