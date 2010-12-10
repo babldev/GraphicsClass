@@ -62,7 +62,7 @@ void BGObstacle::Tick(int time_elapsed) {
     
     GLMovable::Tick(time_elapsed);
     vel_ /= BGObstacle::AIR_RESISTANCE;
-    
+    /*
     // Are we colliding with the top?
     float support_platform_z = support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5;
     if ((original_pos.z - BGObstacle::RADIUS) >= support_platform_z &&
@@ -75,4 +75,5 @@ void BGObstacle::Tick(int time_elapsed) {
             pos_.z = (support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5 + BGObstacle::RADIUS);
         }
     }
+     */
 }

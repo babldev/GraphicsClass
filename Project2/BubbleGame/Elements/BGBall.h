@@ -7,17 +7,20 @@
  *
  */
 
-#include "GraphicsLib/GLMovable.h"
+#ifndef INC_BGBALL_H
+#define INC_BGBALL_H
+
+#include "BubbleGame/Elements/BGMovable.h"
 #include "BubbleGame/Elements/BGPlatform.h"
 #include "BubbleGame/Elements/BGObstacle.h"
 
 #include <list>
 using namespace std;
 
-class BGBall : public GLMovable {
+class BGBall : public BGMovable {
 public:
-    BGBall(Vector3d pos) : GLMovable(pos) {
-        acc_ = Vector3d(0.0f, 0.0f, -20.0f);
+    BGBall(Vector3d pos, const BubbleGame& game) : BGMovable(pos, game) {
+        // acc_ = Vector3d(0.0f, 0.0f, -20.0f);
     }
     ~BGBall() { }
     
@@ -36,7 +39,7 @@ public:
     }
     
     static const int GLUT_SLICES = 60;
-    static const float RADIUS = 50.0f;
+    static const float RADIUS = 75.0f;
     static const float POKE_VEL_CHANGE = 30.0f;
     static const float AIR_RESISTANCE = 1.001f;
     static const float COLLISION_DAMP = 0.55f;
@@ -45,3 +48,5 @@ protected:
     BGPlatform* support_platform_;
     std::list<BGObstacle*> *obstacles_;
 };
+
+#endif

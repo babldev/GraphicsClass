@@ -10,11 +10,12 @@
 #ifndef INC_BGPLATFORM_H
 #define INC_BGPLATFORM_H
 
-#include "GraphicsLib/GLMovable.h"
+#include "BubbleGame/Elements/BGMovable.h"
 
-class BGPlatform : public GLMovable {
+class BGPlatform : public BGMovable {
 public:
-    BGPlatform(Vector3d pos) : GLMovable(pos) {
+    BGPlatform(Vector3d pos, const BubbleGame& game, bool tall) : BGMovable(pos, game), tall_(tall) {
+        height_ = (tall) ? 200.0f : 50.0f; 
     }
     ~BGPlatform() { }
     
@@ -22,11 +23,12 @@ public:
     virtual void Tick(int time_elapsed);
     void DrawObject();
     
-    static const float X_SIZE = 2500.0f;
-    static const float Y_SIZE = 2500.0f;
-    static const float Z_SIZE = 100.0f;
+    static const float X_SIZE = 250.0f;
+    static const float Y_SIZE = 250.0f;
 protected:
     bool alive_; // True if the ball is still on screen
+    bool tall_;
+    float height_;
 };
 
 #endif /* INC_BGPLATFORM_H */

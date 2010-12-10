@@ -38,14 +38,16 @@ void BGPlatform::Draw() {
 }
 
 void BGPlatform::DrawObject() {
-    GLfloat diffuse_color[] = {0.4f, 0.4f, 0.4f, 1.0f};
+    GLfloat tall_diffuse_color[] = {0.4f, 0.4f, 0.4f, 1.0f};
+    GLfloat short_diffuse_color[] = {0.6f, 0.6f, 0.4f, 1.0f};
     
     // set object colors
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, diffuse_color);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE,
+                 (tall_) ? tall_diffuse_color : short_diffuse_color);
     
     glPushMatrix();
         glTranslatef(pos_.x, pos_.y, pos_.z);
-        glScalef(BGPlatform::X_SIZE, BGPlatform::Y_SIZE, BGPlatform::Z_SIZE);
+        glScalef(BGPlatform::X_SIZE, BGPlatform::Y_SIZE, height_);
         glutSolidCube(1);
     glPopMatrix();
 }

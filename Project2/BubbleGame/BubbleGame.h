@@ -7,6 +7,9 @@
  *
  */
 
+#ifndef INC_BUBBLEGAME_H
+#define INC_BUBBLEGAME_H
+
 #include "GraphicsLib/GLWindow.h"
 
 #include "BubbleGame/Elements/BGBall.h"
@@ -85,8 +88,10 @@ protected:
     // Helper pointers
     BGBall* ball_;
     std::list<BGObstacle*> obstacles_;
-    BGPlatform* ground_;
+    BGPlatform* ground_grid_[10][10];
     BGSkybox* skybox_;
     
     int last_tick_;
 };
+
+#endif

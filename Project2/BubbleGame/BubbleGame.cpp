@@ -96,10 +96,14 @@ void BubbleGame::Reset() {
         delete ball_;
         ball_ = NULL;
     }
-    if (ground_ != NULL) {
-        window_->RemoveChild(ground_);
-        delete ground_;
-        ground_ = NULL;
+    if (ground_grid_ != NULL) {
+        // Create the ground grid
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                window_->RemoveChild(ground_grid_[i][j]);
+                delete ground_grid_[i][j];
+            }
+        }
     }
     if (skybox_ != NULL) {
         window_->RemoveChild(skybox_);
@@ -107,15 +111,29 @@ void BubbleGame::Reset() {
         skybox_ = NULL;
     }
     
-    ground_ = new BGPlatform(Vector3d(0, 0, 0));
-    skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f));
+    // Create the ground grid
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            float x_pos = (i - 4.5) * BGPlatform::X_SIZE;
+            float y_pos = (j - 4.5) * BGPlatform::Y_SIZE;
+            bool tall_piece = bool(i % 2) ^ bool(j % 2);
+            
+            // Create a grid of differing heights
+            ground_grid_[i][j] = new BGPlatform(Vector3d(x_pos, y_pos, 0), *this, tall_piece);
+        }
+    }
     
-    ball_ = new BGBall(Vector3d(500.0f,500.0f,1500.0f));
-    ball_->set_supporting_platform(ground_);
+    skybox_ = new BGSkybox(Vector3d(0.0f, 0.0f, 0.0f), *this);
+    ball_ = new BGBall(Vector3d(500.0f,500.0f,1500.0f), *this);
     ball_->set_obstacles(&obstacles_);
     
     window_->AddChild(skybox_);
-    window_->AddChild(ground_);
+    // Add the ground grid to the rendering window
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            window_->AddChild(ground_grid_[i][j]);
+        }
+    }
     AddObstacles();
     window_->AddChild(ball_); // Added last for transparency
     
@@ -163,8 +181,8 @@ void BubbleGame::OnDisplayEvent(void) {
 
 void BubbleGame::AddObstacles() {
     for (int i = -3; i < 3; i++) {
-        BGObstacle* new_obstacle = new BGObstacle(Vector3d(300.0f*i, 300.0f*i, 300.0f));
-        new_obstacle->set_supporting_platform(ground_);
+        BGObstacle* new_obstacle = new BGObstacle(Vector3d(300.0f*i, 300.0f*i, 300.0f), *this);
+        // new_obstacle->set_supporting_platform(ground_);
         obstacles_.push_back(new_obstacle);
         window_->AddChild(new_obstacle);
     }

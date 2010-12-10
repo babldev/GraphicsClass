@@ -10,13 +10,13 @@
 #ifndef INC_BGOBSTACLE_H
 #define INC_BGOBSTACLE_H
 
-#include "GraphicsLib/GLMovable.h"
+#include "BubbleGame/Elements/BGMovable.h"
 #include "BubbleGame/Elements/BGPlatform.h"
 
-class BGObstacle : public GLMovable {
+class BGObstacle : public BGMovable {
 public:
-    BGObstacle(Vector3d pos) : GLMovable(pos) {
-        acc_ = Vector3d(0.0f, 0.0f, -20.0f);
+    BGObstacle(Vector3d pos, const BubbleGame& game) : BGMovable(pos, game) {
+        // acc_ = Vector3d(0.0f, 0.0f, -20.0f);
     }
     ~BGObstacle() { }
     

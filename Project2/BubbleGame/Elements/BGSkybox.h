@@ -7,12 +7,15 @@
  *
  */
 
-#include "GraphicsLib/GLMovable.h"
+#ifndef INC_BGSKYBOX_H
+#define INC_BGSKYBOX_H
+
+#include "BubbleGame/Elements/BGMovable.h"
 #include "GraphicsLib/RGBpixmap/RGBpixmap.h"
 
-class BGSkybox : public GLMovable {
+class BGSkybox : public BGMovable {
 public:
-    BGSkybox(Vector3d pos) : GLMovable(pos) {
+    BGSkybox(Vector3d pos, const BubbleGame& game) : BGMovable(pos, game) {
         Init();
     }
     ~BGSkybox() { }
@@ -29,3 +32,5 @@ protected:
     bool alive_; // True if the ball is still on screen
     RGBpixmap pixmap_;
 };
+
+#endif

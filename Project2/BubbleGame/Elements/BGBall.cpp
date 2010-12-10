@@ -8,7 +8,6 @@
  */
 
 #include "BGBall.h"
-
 #include "GraphicsLib/GLWindow.h"
 
 #ifdef __APPLE__
@@ -25,7 +24,7 @@
 #include <iostream>
 
 void BGBall::Draw() {
-    GLfloat diffuse_color[] = {0, 1.0f, 1.0f, 0.5f};
+    GLfloat diffuse_color[] = {0, 1.0f, 1.0f, 1.0f};
     GLfloat specular_color[] = {1.0f, 1.0f, 1.0f, 1.0f};
     const GLdouble shadow_proj_matrix[] = {
         1.0f, 0, 0, 0,
@@ -61,8 +60,11 @@ void BGBall::Draw() {
 
 void BGBall::DrawObject() {
     glPushMatrix();
-    glTranslatef(pos_.x, pos_.y, pos_.z);
-    glutSolidSphere(BGBall::RADIUS, BGBall::GLUT_SLICES, BGBall::GLUT_SLICES);
+        glTranslatef(pos_.x, pos_.y, pos_.z);
+        glScalef(BGBall::RADIUS, BGBall::RADIUS, BGBall::RADIUS);
+        glutSolidSphere(1.0f, BGBall::GLUT_SLICES, BGBall::GLUT_SLICES);
+    glScalef(1.1f, 1.1f, 1.1f);
+        glutSolidIcosahedron();
     glPopMatrix();
 }
 
@@ -97,7 +99,7 @@ void BGBall::Tick(int time_elapsed) {
             }
         }
     }
-    
+    /*
     // Are we colliding with the top?
     float support_platform_z = support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5;
     if ((original_pos.z - BGBall::RADIUS) >= support_platform_z &&
@@ -110,6 +112,7 @@ void BGBall::Tick(int time_elapsed) {
         pos_.z = (support_platform_->pos_.z + BGPlatform::Z_SIZE*0.5 + BGBall::RADIUS);
         }
     }
+     */
 }
 
 void BGBall::Poke(Vector3d direction) {
